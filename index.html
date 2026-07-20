@@ -1,469 +1,162 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RFID Hub — Cartes & Badges 13.56 MHz · Algérie</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f7f5f0;
-    --card: #ffffff;
-    --line: #e9e3d6;
-    --line-soft: #f0eadf;
-    --ink: #14171e;
-    --ink-2: #3a4256;
-    --ink-3: #7c7a72;
-    --primary: #2f6f5e;
-    --primary-2: #4a8e7c;
-    --accent: #c97b3f;
-    --accent-2: #b06367;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    font-size: 15px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  body::before, body::after {
-    content: ""; position: fixed; width: 520px; height: 520px; border-radius: 50%;
-    pointer-events: none; z-index: 0; filter: blur(80px); opacity: 0.5;
-  }
-  body::before { top: -200px; right: -150px; background: radial-gradient(circle, rgba(47,111,94,0.08), transparent 70%); }
-  body::after { bottom: -200px; left: -200px; background: radial-gradient(circle, rgba(201,123,63,0.08), transparent 70%); }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
-
-  /* Header */
-  header { padding: 24px 0; border-bottom: 1px solid var(--line); background: rgba(247,245,240,0.85); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; }
-  .nav { display: flex; justify-content: space-between; align-items: center; }
-  .brand { display: flex; align-items: center; gap: 10px; }
-  .brand-mark {
-    width: 36px; height: 36px; border-radius: 9px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-2));
-    display: inline-flex; align-items: center; justify-content: center;
-    color: white; box-shadow: 0 4px 12px rgba(47,111,94,0.25);
-  }
-  .brand-name { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); }
-  .brand-tag { font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
-  .nav-links a:hover { color: var(--primary); }
-  .nav-links a.cta { color: var(--primary); font-weight: 600; }
-
-  /* Hero */
-  .hero { padding: 72px 0 56px; }
-  .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; }
-  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 18px; padding: 6px 12px; background: rgba(47,111,94,0.08); border-radius: 100px; }
-  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
-  h1 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 50px; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 18px; }
-  h1 em { font-style: italic; color: var(--primary); }
-  .lede { font-size: 17px; color: var(--ink-2); max-width: 540px; margin: 0 0 28px; }
-  .hero-actions { display: flex; gap: 14px; align-items: center; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-family: inherit; }
-  .btn-primary { background: var(--ink); color: white; }
-  .btn-primary:hover { background: var(--primary); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(47,111,94,0.25); }
-  .btn-ghost { color: var(--ink-2); }
-  .btn-ghost:hover { color: var(--primary); }
-
-  /* Trust strip */
-  .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 48px; padding: 22px 28px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
-  .trust-item { display: flex; align-items: center; gap: 14px; padding: 0 22px; border-right: 1px solid var(--line-soft); }
-  .trust-item:last-child { border-right: none; }
-  .trust-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(47,111,94,0.08); color: var(--primary); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .trust-text { font-size: 13px; }
-  .trust-text strong { display: block; color: var(--ink); font-size: 14px; font-weight: 600; }
-  .trust-text span { color: var(--ink-3); }
-
-  /* Hero visual */
-  .hero-card { position: relative; padding: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 8px 30px -8px rgba(20,23,30,0.08); }
-  .hero-card-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-bottom: 20px; }
-  .chip-vis { display: flex; flex-direction: column; gap: 14px; }
-  .chip-row { display: grid; grid-template-columns: 90px 1fr 50px; align-items: center; gap: 14px; padding: 10px 0; }
-  .chip-row .lbl { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-2); font-weight: 500; }
-  .chip-row .bar-bg { height: 10px; background: var(--line-soft); border-radius: 100px; overflow: hidden; }
-  .chip-row .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-2)); border-radius: 100px; }
-  .chip-row .val { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); text-align: right; }
-
-  /* Section */
-  section { padding: 56px 0; }
-  .sec-head { margin-bottom: 40px; }
-  .sec-eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
-  h2 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; color: var(--ink); margin: 0 0 12px; }
-  .sec-sub { color: var(--ink-2); font-size: 15px; max-width: 600px; }
-
-  /* Catalogue grid */
-  .cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  .chip-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; transition: all 0.2s; position: relative; overflow: hidden; }
-  .chip-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -6px rgba(20,23,30,0.08); border-color: var(--primary); }
-  .chip-card::before { content: ""; position: absolute; top: 0; right: 0; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, rgba(47,111,94,0.06), transparent 70%); }
-  .chip-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-  .chip-card h3 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 22px; margin: 0; color: var(--ink); }
-  .chip-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px; background: rgba(47,111,94,0.08); color: var(--primary); border-radius: 100px; font-weight: 500; }
-  .chip-card p { font-size: 14px; color: var(--ink-2); margin: 0 0 16px; line-height: 1.55; }
-  .chip-specs { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 14px; border-top: 1px dashed var(--line); }
-  .chip-specs span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); }
-
-  /* Compatibility flow */
-  .compat-wrap { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px; }
-  .compat-flow { display: grid; grid-template-columns: 1fr 80px 1fr 80px 1fr; align-items: center; gap: 0; }
-  .flow-node { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px; text-align: center; transition: all 0.2s; cursor: pointer; }
-  .flow-node:hover { border-color: var(--primary); background: white; transform: translateY(-2px); }
-  .flow-node.active { background: var(--primary); color: white; border-color: var(--primary); }
-  .flow-node.active .fn-sub, .flow-node.active .fn-icon { color: white; opacity: 0.8; }
-  .flow-node.active .fn-title { color: white; }
-  .fn-icon { color: var(--ink-3); margin-bottom: 10px; display: inline-flex; }
-  .fn-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); margin-bottom: 4px; }
-  .fn-sub { font-size: 12px; color: var(--ink-3); }
-  .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--ink-3); }
-  .flow-result { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: white; border-radius: 14px; padding: 20px 18px; text-align: center; box-shadow: 0 8px 24px -8px rgba(47,111,94,0.4); }
-  .flow-result .fn-icon { color: rgba(255,255,255,0.85); }
-  .flow-result .fn-title { color: white; }
-  .flow-result .fn-sub { color: rgba(255,255,255,0.8); }
-  .compat-hint { text-align: center; margin-top: 18px; font-size: 13px; color: var(--ink-3); }
-
-  /* Form */
-  .form-wrap { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field.full { grid-column: 1 / -1; }
-  .field label { font-size: 12px; font-weight: 600; color: var(--ink-2); letter-spacing: 0.04em; text-transform: uppercase; }
-  .field input, .field select {
-    padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg);
-    font-family: inherit; font-size: 14px; color: var(--ink); transition: all 0.15s;
-  }
-  .field input:focus, .field select:focus { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 3px rgba(47,111,94,0.1); }
-  .field input[readonly] { background: rgba(47,111,94,0.06); color: var(--primary); font-weight: 600; }
-  .submit-btn { grid-column: 1 / -1; padding: 14px; background: var(--ink); color: white; border: none; border-radius: 10px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-  .submit-btn:hover { background: var(--primary); }
-  .form-meta { display: flex; gap: 18px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-3); }
-  .form-meta span { display: inline-flex; align-items: center; gap: 6px; }
-
-  /* Footer */
-  footer { padding: 40px 0 60px; border-top: 1px solid var(--line); margin-top: 40px; }
-  .foot { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ink-3); }
-  .foot a { color: var(--ink-2); text-decoration: none; }
-  .foot a:hover { color: var(--primary); }
-
-  @media (max-width: 880px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-    h1 { font-size: 38px; }
-    .cat-grid { grid-template-columns: 1fr; }
-    .compat-flow { grid-template-columns: 1fr; gap: 12px; }
-    .flow-arrow svg { transform: rotate(90deg); }
-    .form-grid { grid-template-columns: 1fr; }
-    .trust { grid-template-columns: 1fr; }
-    .trust-item { border-right: none; border-bottom: 1px solid var(--line-soft); padding: 14px 0; }
-    .trust-item:last-child { border-bottom: none; }
-    .nav-links { display: none; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>RFID Hub | Grossiste Cartes & Badges RFID NFC 13.56 MHz en Algérie</title>
+    <meta name="description" content="Fournisseur B2B de cartes RFID, badges NFC et bracelets 13.56 MHz en Algérie. Stock local, livraison 58 wilayas, idéal pour hôtels (VingCard, Onity) et contrôle d'accès.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#f7f5f0',
+                        card: '#ffffff',
+                        line: '#e9e3d6',
+                        ink: '#14171e',
+                        brand: { DEFAULT: '#2f6f5e', light: '#4a8e7c' },
+                        accent: { DEFAULT: '#c97b3f' }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-bg text-ink font-sans">
 
-<header>
-  <div class="container nav">
-    <div class="brand">
-      <span class="brand-mark">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8 12a4 4 0 0 1 8 0"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M12 5v2M12 17v2M5 12h2M17 12h2"/></svg>
-      </span>
-      <div>
-        <div class="brand-name">RFID Hub</div>
-        <div class="brand-tag">NFC · RFID · Algérie</div>
-      </div>
-    </div>
-    <nav class="nav-links">
-      <a href="#catalogue">Catalogue</a>
-      <a href="#compatibilite">Compatibilité</a>
-      <a href="#devis" class="cta">Demander un devis →</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <span class="eyebrow"><span class="dot"></span> Fournisseur local · 58 wilayas</span>
-        <h1>Cartes &amp; badges <em>RFID 13.56&nbsp;MHz</em>, livrés sans délai douanier.</h1>
-        <p class="lede">Hôtellerie, contrôle d'accès, fidélité — RFID Hub approvisionne votre projet en puces MIFARE &amp; NTAG avec facturation en DZD et livraison express sur les 58 wilayas.</p>
-        <div class="hero-actions">
-          <a href="#devis" class="btn btn-primary">Estimer mon projet
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#catalogue" class="btn btn-ghost">Voir le catalogue</a>
-        </div>
-
-        <div class="trust">
-          <div class="trust-item">
-            <span class="trust-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-            </span>
-            <div class="trust-text"><strong>Stock local</strong><span>Zéro délai douanier</span></div>
-          </div>
-          <div class="trust-item">
-            <span class="trust-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
-            </span>
-            <div class="trust-text"><strong>Facturation DZD</strong><span>Paiement local</span></div>
-          </div>
-          <div class="trust-item">
-            <span class="trust-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </span>
-            <div class="trust-text"><strong>58 wilayas</strong><span>Livraison express</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <div class="hero-card-label">Puces disponibles · 13.56 MHz</div>
-        <div class="chip-vis">
-          <div class="chip-row"><span class="lbl">Classic</span><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div><span class="val">1K/4K</span></div>
-          <div class="chip-row"><span class="lbl">Ultralight</span><div class="bar-bg"><div class="bar-fill" style="width:64%"></div></div><span class="val">EV1/C</span></div>
-          <div class="chip-row"><span class="lbl">DESFire</span><div class="bar-bg"><div class="bar-fill" style="width:48%"></div></div><span class="val">EV1-EV3</span></div>
-          <div class="chip-row"><span class="lbl">NTAG</span><div class="bar-bg"><div class="bar-fill" style="width:58%"></div></div><span class="val">213-216</span></div>
-        </div>
-        <div style="margin-top:18px;padding-top:18px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-3);">
-          Capacité mémoire relative — bar indicatif
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="catalogue">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Catalogue</div>
-      <h2>Quatre familles de puces, un seul fournisseur.</h2>
-      <p class="sec-sub">Sélectionnez la puce selon votre cas d'usage — du jetable économique au badge cryptographique haute sécurité.</p>
+    <!-- Top Bar -->
+    <div class="bg-brand text-white text-xs sm:text-sm font-medium py-2 px-4 text-center flex flex-wrap justify-center items-center gap-4">
+        <span>🚀 Offre B2B Algérie : Stock disponible immédiatement via WhatsApp @RFIDHUB</span>
+        <button onclick="downloadHTML()" class="bg-white text-brand text-xs font-bold px-3 py-1 rounded shadow hover:bg-bg transition-all">Télécharger le fichier .html</button>
     </div>
 
-    <div class="cat-grid">
-      <div class="chip-card">
-        <div class="chip-card-head">
-          <h3>MIFARE Classic</h3>
-          <span class="chip-tag">1K · 4K</span>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-bg/90 backdrop-blur-md border-b border-line">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="font-serif text-2xl font-bold tracking-tight text-brand">RFID Hub</div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#avantages" class="text-sm font-medium hover:text-brand transition-colors">Avantages</a>
+                <a href="#catalogue" class="text-sm font-medium hover:text-brand transition-colors">Catalogue</a>
+                <a href="#kit" class="text-sm font-medium hover:text-brand transition-colors">Échantillons</a>
+                <a href="https://wa.me/RFIDHUB" target="_blank" class="px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-light transition-all">Commander</a>
+            </nav>
         </div>
-        <p>Le standard de l'industrie pour le contrôle d'accès, la restauration et l'hôtellerie. Compatible avec la majorité des lecteurs 13.56 MHz déployés.</p>
-        <div class="chip-specs">
-          <span>Mémoire 1KB / 4KB</span><span>·</span><span>CRYPTO1</span><span>·</span><span>ISO 14443A</span>
-        </div>
-      </div>
+    </header>
 
-      <div class="chip-card">
-        <div class="chip-card-head">
-          <h3>MIFARE Ultralight</h3>
-          <span class="chip-tag">EV1 · C</span>
+    <!-- Hero Section -->
+    <section class="pt-24 pb-20 px-6 text-center max-w-4xl mx-auto">
+        <span class="inline-block py-1 px-3 rounded-full bg-brand/10 text-brand text-xs font-semibold mb-6 uppercase tracking-wider">Fournisseur B2B Officiel en Algérie</span>
+        <h1 class="font-serif text-4xl sm:text-6xl mb-6 leading-tight">Solutions Cartes & Badges RFID 13.56 MHz</h1>
+        <p class="text-lg text-ink/70 mb-10 max-w-2xl mx-auto">Partenaire de référence pour les hôtels, complexes touristiques et entreprises. Compatible VingCard, Onity et systèmes de contrôle d'accès.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://wa.me/RFIDHUB" target="_blank" class="px-8 py-4 bg-ink text-white rounded-xl font-bold hover:bg-brand transition-all shadow-lg flex items-center justify-center gap-2">
+                <span>Discuter sur WhatsApp (@RFIDHUB)</span>
+            </a>
+            <a href="#catalogue" class="px-8 py-4 bg-white border border-line text-ink rounded-xl font-bold hover:border-brand transition-all flex items-center justify-center">
+                Voir le catalogue
+            </a>
         </div>
-        <p>Économique et jetable, parfait pour les cartes clients à usage unique, les tickets événementiels et la fidélisation grand public.</p>
-        <div class="chip-specs">
-          <span>64–192 byte</span><span>·</span><span>17pF / 50pF</span><span>·</span><span>NFC Type 2</span>
-        </div>
-      </div>
+    </section>
 
-      <div class="chip-card">
-        <div class="chip-card-head">
-          <h3>MIFARE DESFire</h3>
-          <span class="chip-tag">EV1 · EV2 · EV3</span>
+    <!-- Avantages -->
+    <section id="avantages" class="py-16 bg-white border-y border-line">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 rounded-2xl bg-bg border border-line">
+                <div class="text-3xl mb-4">📦</div>
+                <h3 class="font-serif text-xl font-bold mb-2">Stock Local & Rapide</h3>
+                <p class="text-ink/70 text-sm">Disponibilité immédiate en Algérie pour éviter les ruptures et les longs délais d'importation.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-bg border border-line">
+                <div class="text-3xl mb-4">🏨</div>
+                <h3 class="font-serif text-xl font-bold mb-2">Compatibilité Hôtelière</h3>
+                <p class="text-ink/70 text-sm">Cartes encodables et puces haute sécurité parfaitement adaptées aux serrures de grandes marques.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-bg border border-line">
+                <div class="text-3xl mb-4">🚚</div>
+                <h3 class="font-serif text-xl font-bold mb-2">Livraison 58 Wilayas</h3>
+                <p class="text-ink/70 text-sm">Expédition sécurisée et rapide sur l'ensemble du territoire national pour les professionnels.</p>
+            </div>
         </div>
-        <p>Haute sécurité avec cryptographie AES-128. Recommandé pour les serrures électroniques, transports et applications gouvernementales.</p>
-        <div class="chip-specs">
-          <span>2KB / 4KB / 8KB</span><span>·</span><span>AES-128</span><span>·</span><span>ISO 14443A</span>
-        </div>
-      </div>
+    </section>
 
-      <div class="chip-card">
-        <div class="chip-card-head">
-          <h3>NTAG &amp; Combos</h3>
-          <span class="chip-tag">213 · 215 · 216</span>
+    <!-- Catalogue -->
+    <section id="catalogue" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="font-serif text-3xl sm:text-4xl mb-4">Notre Catalogue Professionnel</h2>
+            <p class="text-ink/70">Des produits certifiés 13.56 MHz pour tous vos besoins de badgeage et d'identification.</p>
         </div>
-        <p>Cartes combo RFID + piste magnétique. Idéal pour les hôtels qui doivent coexister avec d'anciens systèmes d'encodage.</p>
-        <div class="chip-specs">
-          <span>144–888 byte</span><span>·</span><span>NDEF</span><span>·</span><span>Combo Mag</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Produit 1 -->
+            <div class="bg-white rounded-2xl p-8 border border-line flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Hôtellerie & Accès</span>
+                    <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Cartes MIFARE Classic 1K</h3>
+                    <p class="text-ink/70 text-sm mb-6">Standard international 13.56 MHz, idéale pour la programmation des serrures d'hôtels et badges d'entreprise.</p>
+                </div>
+                <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20suis%20intéressé%20par%20les%20Cartes%20MIFARE%20Classic%201K." target="_blank" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
+            </div>
+            <!-- Produit 2 -->
+            <div class="bg-white rounded-2xl p-8 border border-line flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Pratique & Moderne</span>
+                    <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Bracelets RFID silicone</h3>
+                    <p class="text-ink/70 text-sm mb-6">Résistants à l'eau, parfaits pour les parcs aquatiques, piscines d'hôtels, spas et centres de fitness.</p>
+                </div>
+                <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20suis%20intéressé%20par%20les%20Bracelets%20RFID." target="_blank" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
+            </div>
+            <!-- Produit 3 -->
+            <div class="bg-white rounded-2xl p-8 border border-line flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Polyvalent</span>
+                    <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Badges & Porte-clés NFC</h3>
+                    <p class="text-ink/70 text-sm mb-6">Puces NTAG / MIFARE intégrées dans un format porte-clés robuste pour un usage quotidien intensif.</p>
+                </div>
+                <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20suis%20intéressé%20par%20les%20Badges%20et%20Porte-clés%20NFC." target="_blank" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="compatibilite">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Compatibilité serrures</div>
-      <h2>Trouvez la puce adaptée à votre serrure.</h2>
-      <p class="sec-sub">Cliquez sur votre système pour voir la puce recommandée. Notre sélecteur intégré au formulaire applique la même logique.</p>
-    </div>
-
-    <div class="compat-wrap">
-      <div class="compat-flow" id="compatFlow">
-        <div class="flow-node" data-lock="VingCard">
-          <div class="fn-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <div class="fn-title">VingCard</div>
-          <div class="fn-sub">Hôtellerie haut de gamme</div>
+    <!-- Sample Kit CTA -->
+    <section id="kit" class="py-16 px-6">
+        <div class="max-w-4xl mx-auto bg-ink text-white rounded-3xl p-12 text-center shadow-xl">
+            <h2 class="font-serif text-3xl sm:text-4xl mb-4">Testez la qualité avant de commander</h2>
+            <p class="text-white/80 mb-8 max-w-xl mx-auto">Demandez votre kit d'échantillons professionnel et vérifiez la compatibilité directement sur vos équipements.</p>
+            <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20souhaite%20recevoir%20un%20kit%20d'échantillons%20RFID." target="_blank" class="px-8 py-4 bg-white text-ink rounded-xl font-bold hover:bg-bg transition-all inline-block shadow">
+                Recevoir mon kit via WhatsApp (@RFIDHUB)
+            </a>
         </div>
+    </section>
 
-        <div class="flow-arrow">
-          <svg width="40" height="20" viewBox="0 0 40 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h36M30 4l8 6-8 6"/></svg>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-line py-12 px-6 text-center text-sm text-ink/60">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="font-serif text-lg font-bold text-ink">RFID Hub Algérie</div>
+            <div>© 2026 RFID Hub. Tous droits réservés.</div>
+            <a href="https://wa.me/RFIDHUB" target="_blank" class="text-brand font-semibold hover:underline">Support WhatsApp : @RFIDHUB</a>
         </div>
+    </footer>
 
-        <div class="flow-node" data-lock="Onity">
-          <div class="fn-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <div class="fn-title">Onity</div>
-          <div class="fn-sub">Standard hôtelier</div>
-        </div>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/RFIDHUB" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
 
-        <div class="flow-arrow">
-          <svg width="40" height="20" viewBox="0 0 40 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h36M30 4l8 6-8 6"/></svg>
-        </div>
-
-        <div class="flow-result" data-result>
-          <div class="fn-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-          </div>
-          <div class="fn-title" id="resultTitle">Puce suggérée</div>
-          <div class="fn-sub" id="resultSub">Cliquez sur une serrure</div>
-        </div>
-      </div>
-      <div class="compat-hint">Le formulaire de devis applique automatiquement cette logique.</div>
-    </div>
-  </div>
-</section>
-
-<section id="devis">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Devis</div>
-      <h2>Décrivez votre projet, on revient sous 24h.</h2>
-      <p class="sec-sub">Stock local, facturation DZD, livraison sur les 58 wilayas. Aucun paiement en ligne requis à ce stade.</p>
-    </div>
-
-    <div class="form-wrap">
-      <form id="devis-form" class="form-grid">
-        <div class="field">
-          <label>Entreprise / Hôtel</label>
-          <input type="text" name="entreprise" placeholder="Ex. Hôtel El Aurassi" required>
-        </div>
-        <div class="field">
-          <label>Nom</label>
-          <input type="text" name="nom" placeholder="Votre nom" required>
-        </div>
-        <div class="field">
-          <label>WhatsApp</label>
-          <input type="tel" name="telephone" placeholder="+213 ..." required>
-        </div>
-        <div class="field">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="contact@exemple.dz" required>
-        </div>
-        <div class="field full">
-          <label>Système de serrure</label>
-          <select id="serrure-select" name="serrure">
-            <option value="">Sélectionnez votre serrure...</option>
-            <option value="VingCard">VingCard</option>
-            <option value="Onity">Onity</option>
-            <option value="SALTO">SALTO</option>
-            <option value="autre">Autre / Je ne sais pas</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Puce suggérée</label>
-          <input type="text" name="type_puce" id="puce-suggeree" readonly placeholder="Auto-sélectionnée">
-        </div>
-        <div class="field">
-          <label>Quantité estimée</label>
-          <input type="number" name="quantite" id="quantite-input" placeholder="Ex. 500">
-        </div>
-        <button type="submit" id="submit-btn" class="submit-btn">
-          Envoyer la demande
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </button>
-      </form>
-      <div class="form-meta">
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Réponse sous 24h ouvrées
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          Devis ferme &amp; daté
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          58 wilayas desservies
-        </span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container foot">
-    <div>© 2026 RFID Hub · Fournisseur de solutions NFC &amp; RFID en Algérie</div>
-    <div>
-      <a href="#catalogue">Catalogue</a> · <a href="#devis">Devis</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // Lock → chip compatibility
-  const compat = {
-    VingCard: { chip: 'Ultralight EV1', sub: 'Compatibilité native VingCard' },
-    Onity:    { chip: 'MIFARE 1K',      sub: 'Standard hôtellerie Onity' },
-    SALTO:    { chip: 'DESFire EV2',    sub: 'Haute sécurité SALTO' }
-  };
-
-  // Hero flow interactivity
-  document.querySelectorAll('#compatFlow .flow-node').forEach(node => {
-    node.addEventListener('click', () => {
-      const lock = node.dataset.lock;
-      const data = compat[lock];
-      document.getElementById('resultTitle').textContent = data.chip;
-      document.getElementById('resultSub').textContent = data.sub;
-      document.querySelectorAll('#compatFlow .flow-node').forEach(n => n.classList.remove('active'));
-      node.classList.add('active');
-    });
-  });
-
-  // Form: lock → suggested chip
-  document.getElementById('serrure-select').addEventListener('change', function() {
-    const p = document.getElementById('puce-suggeree');
-    p.value = compat[this.value]?.chip || '';
-  });
-</script>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script type="text/javascript">
-  (function() { emailjs.init("_p5Ac_d6ThpTw-kkA"); })();
-  document.getElementById('devis-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true; btn.textContent = 'Envoi en cours…';
-    emailjs.sendForm('service_rv7mci5', 'template_b5fkcrf', this).then(
-      () => {
-        btn.textContent = 'Envoyé ✓';
-        btn.style.background = 'var(--primary)';
-        this.reset();
-        setTimeout(() => { btn.disabled = false; btn.innerHTML = 'Envoyer la demande <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'; btn.style.background = ''; }, 3000);
-      },
-      (err) => {
-        btn.disabled = false; btn.textContent = 'Erreur — réessayer';
-        console.error(err);
-      }
-    );
-  });
-</script>
-
+    <script>
+        function downloadHTML() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
 </html>
