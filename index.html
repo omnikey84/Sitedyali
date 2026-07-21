@@ -7,11 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --primary: #1a56db;
@@ -41,32 +37,24 @@
             overflow-x: hidden;
         }
 
-        /* Page transitions */
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
+        .page { display: none; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        /* Top Banner */
         .top-banner {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -76,13 +64,8 @@
             font-weight: 500;
         }
 
-        .top-banner a {
-            color: #fbbf24;
-            text-decoration: none;
-            font-weight: 600;
-        }
+        .top-banner a { color: #fbbf24; text-decoration: none; font-weight: 600; }
 
-        /* Navigation */
         .navbar {
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(20px);
@@ -94,9 +77,7 @@
             transition: box-shadow 0.3s ease;
         }
 
-        .navbar.scrolled {
-            box-shadow: var(--shadow);
-        }
+        .navbar.scrolled { box-shadow: var(--shadow); }
 
         .nav-container {
             max-width: 1200px;
@@ -146,9 +127,7 @@
             cursor: pointer;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+        .nav-links a:hover { color: var(--primary); }
 
         .nav-cta {
             background: var(--accent);
@@ -173,7 +152,6 @@
             color: var(--gray-700);
         }
 
-        /* Hero */
         .hero {
             background: linear-gradient(135deg, #f0f4ff 0%, #e8f5e9 100%);
             padding: 80px 0 60px;
@@ -291,9 +269,7 @@
             border-top: 1px solid var(--gray-300);
         }
 
-        .hero-stat {
-            text-align: left;
-        }
+        .hero-stat { text-align: left; }
 
         .hero-stat-value {
             font-size: 1.5rem;
@@ -327,35 +303,9 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        .floating-card:nth-child(1) {
-            top: 0;
-            left: 0;
-            width: 260px;
-            z-index: 3;
-        }
-
-        .floating-card:nth-child(2) {
-            top: 40px;
-            left: 40px;
-            width: 260px;
-            z-index: 2;
-            opacity: 0.8;
-            animation-delay: -2s;
-        }
-
-        .floating-card:nth-child(3) {
-            top: 80px;
-            left: 80px;
-            width: 260px;
-            z-index: 1;
-            opacity: 0.6;
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+        .floating-card:nth-child(1) { top: 0; left: 0; width: 260px; z-index: 3; }
+        .floating-card:nth-child(2) { top: 40px; left: 40px; width: 260px; z-index: 2; opacity: 0.8; animation-delay: -2s; }
+        .floating-card:nth-child(3) { top: 80px; left: 80px; width: 260px; z-index: 1; opacity: 0.6; animation-delay: -4s; }
 
         .fc-icon {
             width: 48px;
@@ -369,25 +319,11 @@
             margin-bottom: 12px;
         }
 
-        .fc-title {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
+        .fc-title { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+        .fc-desc { font-size: 0.8rem; color: var(--gray-500); }
 
-        .fc-desc {
-            font-size: 0.8rem;
-            color: var(--gray-500);
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-alt {
-            background: var(--gray-100);
-        }
+        .section { padding: 80px 0; }
+        .section-alt { background: var(--gray-100); }
 
         .container {
             max-width: 1200px;
@@ -414,7 +350,6 @@
             margin: 0 auto;
         }
 
-        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -447,18 +382,9 @@
             margin-bottom: 20px;
         }
 
-        .feature-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+        .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .feature-card p { color: var(--gray-500); font-size: 0.95rem; }
 
-        .feature-card p {
-            color: var(--gray-500);
-            font-size: 0.95rem;
-        }
-
-        /* Stats */
         .stats-section {
             background: linear-gradient(135deg, var(--dark), var(--gray-900));
             color: white;
@@ -482,12 +408,8 @@
             margin-bottom: 8px;
         }
 
-        .stat-item p {
-            color: var(--gray-300);
-            font-size: 1rem;
-        }
+        .stat-item p { color: var(--gray-300); font-size: 1rem; }
 
-        /* Catalog */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -516,14 +438,9 @@
             transition: transform 0.5s;
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
+        .product-card:hover .product-image { transform: scale(1.05); }
 
-        .product-image-wrapper {
-            overflow: hidden;
-            position: relative;
-        }
+        .product-image-wrapper { overflow: hidden; position: relative; }
 
         .product-badge {
             position: absolute;
@@ -537,21 +454,9 @@
             font-weight: 600;
         }
 
-        .product-info {
-            padding: 24px;
-        }
-
-        .product-info h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .product-info p {
-            color: var(--gray-500);
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-        }
+        .product-info { padding: 24px; }
+        .product-info h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+        .product-info p { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 16px; }
 
         .product-link {
             display: inline-flex;
@@ -564,22 +469,15 @@
             transition: gap 0.2s;
         }
 
-        .product-link:hover {
-            gap: 10px;
-        }
+        .product-link:hover { gap: 10px; }
 
-        /* Steps */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
 
-        .step-card {
-            text-align: center;
-            padding: 36px;
-            position: relative;
-        }
+        .step-card { text-align: center; padding: 36px; position: relative; }
 
         .step-number {
             width: 56px;
@@ -595,18 +493,9 @@
             margin: 0 auto 20px;
         }
 
-        .step-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+        .step-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .step-card p { color: var(--gray-500); font-size: 0.95rem; }
 
-        .step-card p {
-            color: var(--gray-500);
-            font-size: 0.95rem;
-        }
-
-        /* CTA Banner */
         .cta-banner {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: var(--radius-lg);
@@ -628,29 +517,11 @@
             border-radius: 50%;
         }
 
-        .cta-banner h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            position: relative;
-        }
+        .cta-banner h2 { font-size: 2rem; font-weight: 800; margin-bottom: 16px; position: relative; }
+        .cta-banner p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 32px; position: relative; }
+        .cta-banner .btn { position: relative; }
 
-        .cta-banner p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 32px;
-            position: relative;
-        }
-
-        .cta-banner .btn {
-            position: relative;
-        }
-
-        /* FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .faq-list { max-width: 800px; margin: 0 auto; }
 
         .faq-item {
             background: white;
@@ -661,9 +532,7 @@
             transition: box-shadow 0.3s;
         }
 
-        .faq-item:hover {
-            box-shadow: var(--shadow);
-        }
+        .faq-item:hover { box-shadow: var(--shadow); }
 
         .faq-question {
             padding: 24px;
@@ -676,9 +545,7 @@
             transition: color 0.2s;
         }
 
-        .faq-question:hover {
-            color: var(--primary);
-        }
+        .faq-question:hover { color: var(--primary); }
 
         .faq-toggle {
             width: 32px;
@@ -709,12 +576,8 @@
             padding: 0 24px 24px;
         }
 
-        .faq-answer p {
-            color: var(--gray-500);
-            line-height: 1.7;
-        }
+        .faq-answer p { color: var(--gray-500); line-height: 1.7; }
 
-        /* Footer */
         .footer {
             background: var(--dark);
             color: var(--gray-300);
@@ -728,31 +591,12 @@
             margin-bottom: 40px;
         }
 
-        .footer-brand .logo {
-            color: white;
-            margin-bottom: 16px;
-        }
+        .footer-brand .logo { color: white; margin-bottom: 16px; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; color: var(--gray-500); }
+        .footer h4 { color: white; font-size: 1rem; font-weight: 700; margin-bottom: 20px; }
 
-        .footer-brand p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--gray-500);
-        }
-
-        .footer h4 {
-            color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
 
         .footer-links a {
             color: var(--gray-500);
@@ -762,9 +606,7 @@
             cursor: pointer;
         }
 
-        .footer-links a:hover {
-            color: white;
-        }
+        .footer-links a:hover { color: white; }
 
         .footer-bottom {
             border-top: 1px solid var(--gray-700);
@@ -777,9 +619,7 @@
         /* ==================== */
         /* PRODUCT PAGE STYLES  */
         /* ==================== */
-        .product-page {
-            padding: 40px 0 80px;
-        }
+        .product-page { padding: 40px 0 80px; }
 
         .breadcrumb {
             display: flex;
@@ -790,15 +630,8 @@
             margin-bottom: 32px;
         }
 
-        .breadcrumb a {
-            color: var(--primary);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
+        .breadcrumb a { color: var(--primary); text-decoration: none; cursor: pointer; }
+        .breadcrumb a:hover { text-decoration: underline; }
 
         .product-detail-grid {
             display: grid;
@@ -807,10 +640,7 @@
             align-items: start;
         }
 
-        .product-gallery {
-            position: sticky;
-            top: 100px;
-        }
+        .product-gallery { position: sticky; top: 100px; }
 
         .product-main-image {
             width: 100%;
@@ -822,6 +652,7 @@
         .product-thumbnails {
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .product-thumbnail {
@@ -835,9 +666,7 @@
         }
 
         .product-thumbnail:hover,
-        .product-thumbnail.active {
-            border-color: var(--primary);
-        }
+        .product-thumbnail.active { border-color: var(--primary); }
 
         .product-detail-info h1 {
             font-size: 2.25rem;
@@ -895,19 +724,8 @@
             flex-shrink: 0;
         }
 
-        .highlight-text {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .highlight-text small {
-            display: block;
-            font-weight: 400;
-            color: var(--gray-500);
-            font-size: 0.8rem;
-            margin-top: 2px;
-        }
+        .highlight-text { font-size: 0.9rem; font-weight: 500; color: var(--gray-700); }
+        .highlight-text small { display: block; font-weight: 400; color: var(--gray-500); font-size: 0.8rem; margin-top: 2px; }
 
         .specs-table {
             width: 100%;
@@ -918,8 +736,7 @@
             overflow: hidden;
         }
 
-        .specs-table th,
-        .specs-table td {
+        .specs-table th, .specs-table td {
             padding: 14px 20px;
             text-align: left;
             border-bottom: 1px solid var(--gray-100);
@@ -933,20 +750,14 @@
             width: 40%;
         }
 
-        .specs-table td {
-            font-size: 0.9rem;
-            color: var(--gray-900);
-        }
-
-        .specs-table tr:last-child th,
-        .specs-table tr:last-child td {
-            border-bottom: none;
-        }
+        .specs-table td { font-size: 0.9rem; color: var(--gray-900); }
+        .specs-table tr:last-child th, .specs-table tr:last-child td { border-bottom: none; }
 
         .product-actions {
             display: flex;
             gap: 16px;
             margin-bottom: 32px;
+            flex-wrap: wrap;
         }
 
         .btn-whatsapp {
@@ -1012,12 +823,146 @@
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        /* Models Grid */
+        .models-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-100);
         }
 
-        /* Related Products */
+        .models-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .models-section > p {
+            color: var(--gray-500);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid var(--gray-100);
+            transition: all 0.3s;
+        }
+
+        .model-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .model-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: var(--gray-100);
+        }
+
+        .model-info { padding: 20px; }
+
+        .model-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .model-specs {
+            list-style: none;
+            padding: 0;
+        }
+
+        .model-specs li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 0.85rem;
+        }
+
+        .model-specs li:last-child { border-bottom: none; }
+
+        .model-specs .spec-label {
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        .model-specs .spec-value {
+            color: var(--gray-900);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .model-cta {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: 12px;
+            border-radius: 8px;
+        }
+
+        .model-cta:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Compatibility Section */
+        .compatibility-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--gray-100);
+            border-radius: var(--radius-lg);
+        }
+
+        .compatibility-section h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .compat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .compat-item {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid var(--gray-100);
+        }
+
+        .compat-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .compat-item p {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
         .related-section {
             margin-top: 80px;
             padding-top: 60px;
@@ -1032,43 +977,19 @@
 
         .related-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 24px;
         }
 
-        /* Responsive */
         @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .features-grid,
-            .catalog-grid,
-            .steps-grid,
-            .related-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .product-detail-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .product-gallery {
-                position: static;
-            }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-visual { display: none; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .features-grid, .catalog-grid, .steps-grid, .models-grid { grid-template-columns: repeat(2, 1fr); }
+            .product-detail-grid { grid-template-columns: 1fr; }
+            .product-gallery { position: static; }
+            .compat-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -1084,57 +1005,19 @@
                 gap: 20px;
                 box-shadow: var(--shadow-lg);
             }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-header h2 {
-                font-size: 1.75rem;
-            }
-
-            .features-grid,
-            .catalog-grid,
-            .steps-grid,
-            .stats-grid,
-            .related-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .product-highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .product-actions {
-                flex-direction: column;
-            }
-
-            .cta-banner {
-                padding: 40px 24px;
-            }
-
-            .cta-banner h2 {
-                font-size: 1.5rem;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 16px;
-                align-items: center;
-            }
+            .nav-links.open { display: flex; }
+            .mobile-toggle { display: block; }
+            .hero h1 { font-size: 2rem; }
+            .section-header h2 { font-size: 1.75rem; }
+            .features-grid, .catalog-grid, .steps-grid, .stats-grid, .related-grid, .models-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .product-highlights { grid-template-columns: 1fr; }
+            .product-actions { flex-direction: column; }
+            .cta-banner { padding: 40px 24px; }
+            .cta-banner h2 { font-size: 1.5rem; }
+            .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
+            .compat-grid { grid-template-columns: 1fr; }
+            .product-detail-info h1 { font-size: 1.75rem; }
         }
     </style>
 </head>
@@ -1158,7 +1041,7 @@
                 <li><a onclick="scrollToSection('faq')">FAQ</a></li>
                 <li><a class="nav-cta" href="#">Commander sur WhatsApp</a></li>
             </ul>
-            <button class="mobile-toggle" onclick="toggleMobileMenu()">☰</button>
+            <button class="mobile-toggle" onclick="toggleMobileMenu()"></button>
         </div>
     </nav>
 
@@ -1170,12 +1053,12 @@
         <section class="hero">
             <div class="hero-container">
                 <div class="hero-content">
-                    <div class="hero-badge">️ Fournisseur B2B en Algérie</div>
+                    <div class="hero-badge">🏷️ Fournisseur B2B en Algérie</div>
                     <h1>Solutions Cartes & Badges <span>RFID 13.56 MHz</span></h1>
                     <p>Partenaire de référence pour les hôtels, complexes touristiques et entreprises. Compatible VingCard, Onity et systèmes de contrôle d'accès.</p>
                     <div class="hero-buttons">
                         <a class="btn btn-primary" href="#">💬 Discuter sur WhatsApp</a>
-                        <a class="btn btn-secondary" onclick="scrollToSection('catalogue')"> Voir le catalogue</a>
+                        <a class="btn btn-secondary" onclick="scrollToSection('catalogue')">📋 Voir le catalogue</a>
                     </div>
                     <div class="hero-stats">
                         <div class="hero-stat">
@@ -1187,7 +1070,7 @@
                             <div class="hero-stat-label">100+ hôtels équipés</div>
                         </div>
                         <div class="hero-stat">
-                            <div class="hero-stat-value"></div>
+                            <div class="hero-stat-value">🚚</div>
                             <div class="hero-stat-label">69 wilayas couvertes</div>
                         </div>
                     </div>
@@ -1195,7 +1078,7 @@
                 <div class="hero-visual">
                     <div class="hero-card-stack">
                         <div class="floating-card">
-                            <div class="fc-icon">🏨</div>
+                            <div class="fc-icon"></div>
                             <div class="fc-title">Hôtellerie</div>
                             <div class="fc-desc">Compatible VingCard & Onity</div>
                         </div>
@@ -1228,9 +1111,9 @@
                         <p>Disponibilité immédiate en Algérie pour éviter les ruptures et les longs délais d'importation.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"></div>
+                        <div class="feature-icon">🏨</div>
                         <h3>Compatibilité Hôtelière</h3>
-                        <p>Cartes encodables et puces haute sécurité parfaitement adaptées aux serrures de grandes marques.</p>
+                        <p>Cartes encodables et puces haute sécurité perfectly adaptées aux serrures de grandes marques.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🚚</div>
@@ -1269,20 +1152,20 @@
                     <p>Des produits certifiés 13.56 MHz pour tous vos besoins de badgeage et d'identification.</p>
                 </div>
                 <div class="catalog-grid">
-                    <div class="product-card" onclick="showPage('product-mifare')">
+                    <div class="product-card" onclick="showPage('product-cartes')">
                         <div class="product-image-wrapper">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f03d30af-b4ea-4b72-ae6e-16ca86b1bfb1.png" alt="Cartes MIFARE Classic 1K" class="product-image">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1d981b773-ee6c-4c18-9b6a-468278d787f6.png" alt="Cartes RFID" class="product-image">
                             <span class="product-badge">Hôtellerie & Accès</span>
                         </div>
                         <div class="product-info">
-                            <h3>Cartes MIFARE Classic 1K</h3>
-                            <p>Standard international 13.56 MHz, idéale pour la programmation des serrures d'hôtels et badges d'entreprise.</p>
-                            <span class="product-link">Voir les détails →</span>
+                            <h3>Cartes RFID</h3>
+                            <p>6 modèles disponibles : MIFARE Classic 1K/4K, DESFire EV1 1K/2K/4K, DESFire EV2 2K. Compatible VingCard, Onity, Salto, Dormakaba, Saflok, ASSA ABLOY.</p>
+                            <span class="product-link">Voir les 6 modèles →</span>
                         </div>
                     </div>
                     <div class="product-card" onclick="showPage('product-bracelet')">
                         <div class="product-image-wrapper">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/13e326154-643e-42b9-93ef-ad91d9c45af2.png" alt="Bracelets RFID Silicone" class="product-image">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/17a8553e2-166f-4103-8db8-9399fd48bf3a.png" alt="Bracelets RFID Silicone" class="product-image">
                             <span class="product-badge">Pratique & Moderne</span>
                         </div>
                         <div class="product-info">
@@ -1293,7 +1176,7 @@
                     </div>
                     <div class="product-card" onclick="showPage('product-tag')">
                         <div class="product-image-wrapper">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/152a0899d-c4dd-4bf5-a46f-15979fd94905.png" alt="Badges & Porte-clés NFC" class="product-image">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1ac2e4243-0e69-4071-9fc2-6b4c163e8299.png" alt="Badges & Porte-clés NFC" class="product-image">
                             <span class="product-badge">Polyvalent</span>
                         </div>
                         <div class="product-info">
@@ -1322,12 +1205,12 @@
                     <div class="step-card">
                         <div class="step-number">2</div>
                         <h3>Recevez un devis</h3>
-                        <p>Nous confirmons la compatibilité et vous envoyons un devis adapté à votre volume.</p>
+                        <p>We confirm the compatibility and send you an adapted quote for your volume.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">3</div>
                         <h3>Livraison</h3>
-                        <p>Expédition sécurisée vers votre wilaya, partout en Algérie.</p>
+                        <p>Secure shipping to your wilaya, all over Algeria.</p>
                     </div>
                 </div>
             </div>
@@ -1339,7 +1222,7 @@
                 <div class="cta-banner">
                     <h2>Testez la qualité avant de commander</h2>
                     <p>Demandez votre kit d'échantillons professionnel et vérifiez la compatibilité directement sur vos équipements.</p>
-                    <a class="btn btn-primary" href="#"> Recevoir mon kit via WhatsApp</a>
+                    <a class="btn btn-primary" href="#">📦 Recevoir mon kit via WhatsApp</a>
                 </div>
             </div>
         </section>
@@ -1358,7 +1241,7 @@
                             <div class="faq-toggle">+</div>
                         </div>
                         <div class="faq-answer">
-                            <p>Oui. Nos cartes 13.56 MHz (MIFARE, NTAG) sont conçues pour fonctionner avec les principaux systèmes hôteliers, dont VingCard et Onity. Envoyez-nous la référence de votre système sur WhatsApp pour confirmer la compatibilité exacte avant commande.</p>
+                            <p>Oui. Nos cartes 13.56 MHz (MIFARE, DESFire, NTAG) sont conçues pour fonctionner avec les principaux systèmes hôteliers, dont VingCard, Onity, Salto, Dormakaba, Saflok et ASSA ABLOY. Envoyez-nous la référence de votre système sur WhatsApp pour confirmer la compatibilité exacte avant commande.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1426,9 +1309,9 @@
     </div>
 
     <!-- ==================== -->
-    <!-- PRODUCT: MIFARE      -->
+    <!-- PRODUCT: CARTES RFID -->
     <!-- ==================== -->
-    <div id="page-product-mifare" class="page">
+    <div id="page-product-cartes" class="page">
         <section class="product-page">
             <div class="container">
                 <div class="breadcrumb">
@@ -1436,51 +1319,54 @@
                     <span>/</span>
                     <a onclick="showPage('home'); setTimeout(()=>scrollToSection('catalogue'),100)">Catalogue</a>
                     <span>/</span>
-                    <span>Cartes MIFARE Classic 1K</span>
+                    <span>Cartes RFID</span>
                 </div>
 
                 <div class="product-detail-grid">
                     <div class="product-gallery">
-                        <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f03d30af-b4ea-4b72-ae6e-16ca86b1bfb1.png" alt="Cartes MIFARE Classic 1K" class="product-main-image" id="mifare-main-img">
+                        <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1d981b773-ee6c-4c18-9b6a-468278d787f6.png" alt="Cartes RFID" class="product-main-image" id="cartes-main-img">
                         <div class="product-thumbnails">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f03d30af-b4ea-4b72-ae6e-16ca86b1bfb1.png" class="product-thumbnail active" onclick="changeImage('mifare-main-img', this)">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f03d30af-b4ea-4b72-ae6e-16ca86b1bfb1.png" class="product-thumbnail" onclick="changeImage('mifare-main-img', this)" style="filter: hue-rotate(30deg);">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f03d30af-b4ea-4b72-ae6e-16ca86b1bfb1.png" class="product-thumbnail" onclick="changeImage('mifare-main-img', this)" style="filter: hue-rotate(60deg);">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1d981b773-ee6c-4c18-9b6a-468278d787f6.png" class="product-thumbnail active" onclick="changeImage('cartes-main-img', this)">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f50624b2-0249-49e5-a224-27e405aea69b.png" class="product-thumbnail" onclick="changeImage('cartes-main-img', this)">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/11691f698-da41-46a3-bb10-90f229bae0a9.png" class="product-thumbnail" onclick="changeImage('cartes-main-img', this)">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/19a468cb2-f747-42f3-ab61-b7631abf0166.png" class="product-thumbnail" onclick="changeImage('cartes-main-img', this)">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/136714574-9826-4404-aa36-96cf2856e24f.png" class="product-thumbnail" onclick="changeImage('cartes-main-img', this)">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/183f2a815-6371-47b0-9dcc-06aa30d6ccb1.png" class="product-thumbnail" onclick="changeImage('cartes-main-img', this)">
                         </div>
                     </div>
 
                     <div class="product-detail-info">
-                        <div class="product-tag"> Hôtellerie & Accès</div>
-                        <h1>Cartes MIFARE Classic 1K</h1>
+                        <div class="product-tag">🏨 Hôtellerie & Contrôle d'accès</div>
+                        <h1>Cartes RFID</h1>
                         <p class="product-description">
-                            Notre carte MIFARE Classic 1K est le standard international pour les systèmes de contrôle d'accès hôtelier et d'entreprise. Fonctionnant à 13.56 MHz, elle offre une compatibilité totale avec les serrures électroniques des plus grandes marques comme VingCard, Onity, et bien d'autres. Idéale pour la programmation des chambres d'hôtel, badges d'entreprise et systèmes de billettique.
+                            Notre gamme complète de cartes RFID 13.56 MHz propose 6 modèles adaptés à tous les systèmes de contrôle d'accès hôtelier et d'entreprise. Disponibles en versions MIFARE Classic (1K, 4K) et DESFire EV1/EV2 (1K, 2K, 4K), elles offrent une compatibilité totale avec les serrures électroniques des plus grandes marques : VingCard, Onity, Salto, Dormakaba, Saflok et ASSA ABLOY. PVC blanc premium, encodables et réinscriptibles.
                         </p>
 
                         <div class="product-availability">
                             <div class="availability-dot"></div>
-                            En stock — Livraison sous 48h dans 69 wilayas
+                            En stock — 6 modèles disponibles, livraison sous 48h
                         </div>
 
                         <div class="product-highlights" style="margin-top: 24px;">
                             <div class="highlight-item">
-                                <div class="highlight-icon"></div>
+                                <div class="highlight-icon">🔐</div>
                                 <div class="highlight-text">
                                     Haute sécurité
-                                    <small>Cryptage MIFARE avancé</small>
+                                    <small>Cryptage MIFARE & DESFire avancé</small>
                                 </div>
                             </div>
                             <div class="highlight-item">
                                 <div class="highlight-icon">📡</div>
                                 <div class="highlight-text">
                                     13.56 MHz
-                                    <small>Fréquence standard NFC</small>
+                                    <small>Fréquence standard NFC / HF</small>
                                 </div>
                             </div>
                             <div class="highlight-item">
                                 <div class="highlight-icon">🏨</div>
                                 <div class="highlight-text">
-                                    Compatible hôtels
-                                    <small>VingCard, Onity & plus</small>
+                                    6 marques compatibles
+                                    <small>VingCard, Onity, Salto, Dormakaba, Saflok, ASSA ABLOY</small>
                                 </div>
                             </div>
                             <div class="highlight-item">
@@ -1492,52 +1378,156 @@
                             </div>
                         </div>
 
-                        <table class="specs-table">
-                            <tr>
-                                <th>Type de puce</th>
-                                <td>MIFARE Classic 1K (S50)</td>
-                            </tr>
-                            <tr>
-                                <th>Fréquence</th>
-                                <td>13.56 MHz (HF)</td>
-                            </tr>
-                            <tr>
-                                <th>Mémoire</th>
-                                <td>1 Ko (1024 octets)</td>
-                            </tr>
-                            <tr>
-                                <th>Norme</th>
-                                <td>ISO 14443 Type A</td>
-                            </tr>
-                            <tr>
-                                <th>Dimensions</th>
-                                <td>85.6 × 54 × 0.84 mm (CR80)</td>
-                            </tr>
-                            <tr>
-                                <th>Matériau</th>
-                                <td>PVC blanc premium</td>
-                            </tr>
-                            <tr>
-                                <th>Température</th>
-                                <td>-25°C à +70°C</td>
-                            </tr>
-                            <tr>
-                                <th>Durée de vie</th>
-                                <td>10 ans / 100 000 écritures</td>
-                            </tr>
-                            <tr>
-                                <th>Compatibilité</th>
-                                <td>VingCard, Onity, Saflok, Kaba</td>
-                            </tr>
-                        </table>
-
                         <div class="product-actions">
-                            <a class="btn-whatsapp" href="#">
-                                💬 Devis par WhatsApp
-                            </a>
-                            <button class="btn-back" onclick="showPage('home')">
-                                ← Retour au catalogue
-                            </button>
+                            <a class="btn-whatsapp" href="#">💬 Devis par WhatsApp</a>
+                            <button class="btn-back" onclick="showPage('home')">← Retour au catalogue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Models -->
+                <div class="models-section">
+                    <h2>📋 Les 6 modèles de cartes RFID disponibles</h2>
+                    <p>Choisissez le modèle adapté à votre système de serrure ou de contrôle d'accès.</p>
+
+                    <div class="models-grid">
+                        <!-- MIFARE Classic 1K -->
+                        <div class="model-card">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1d981b773-ee6c-4c18-9b6a-468278d787f6.png" alt="MIFARE Classic 1K" class="model-image">
+                            <div class="model-info">
+                                <h3>MIFARE Classic 1K</h3>
+                                <ul class="model-specs">
+                                    <li><span class="spec-label">Puce</span><span class="spec-value">MIFARE Classic 1K (S50)</span></li>
+                                    <li><span class="spec-label">Fréquence</span><span class="spec-value">13.56 MHz</span></li>
+                                    <li><span class="spec-label">Mémoire</span><span class="spec-value">1 Ko (1024 octets)</span></li>
+                                    <li><span class="spec-label">Norme</span><span class="spec-value">ISO 14443 Type A</span></li>
+                                    <li><span class="spec-label">Dimensions</span><span class="spec-value">85.6 × 54 × 0.84 mm</span></li>
+                                    <li><span class="spec-label">Matériau</span><span class="spec-value">PVC blanc</span></li>
+                                    <li><span class="spec-label">Compatibilité</span><span class="spec-value">Salto, Dormakaba</span></li>
+                                </ul>
+                                <a class="model-cta" href="#">💬 Demander un devis</a>
+                            </div>
+                        </div>
+
+                        <!-- MIFARE Classic 4K -->
+                        <div class="model-card">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f50624b2-0249-49e5-a224-27e405aea69b.png" alt="MIFARE Classic 4K" class="model-image">
+                            <div class="model-info">
+                                <h3>MIFARE Classic 4K</h3>
+                                <ul class="model-specs">
+                                    <li><span class="spec-label">Puce</span><span class="spec-value">MIFARE Classic 4K (S70)</span></li>
+                                    <li><span class="spec-label">Fréquence</span><span class="spec-value">13.56 MHz</span></li>
+                                    <li><span class="spec-label">Mémoire</span><span class="spec-value">4 Ko (4096 octets)</span></li>
+                                    <li><span class="spec-label">Norme</span><span class="spec-value">ISO 14443 Type A</span></li>
+                                    <li><span class="spec-label">Dimensions</span><span class="spec-value">85.6 × 54 × 0.84 mm</span></li>
+                                    <li><span class="spec-label">Matériau</span><span class="spec-value">PVC blanc</span></li>
+                                    <li><span class="spec-label">Compatibilité</span><span class="spec-value">Salto, Dormakaba</span></li>
+                                </ul>
+                                <a class="model-cta" href="#">💬 Demander un devis</a>
+                            </div>
+                        </div>
+
+                        <!-- DESFire EV1 1K -->
+                        <div class="model-card">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/11691f698-da41-46a3-bb10-90f229bae0a9.png" alt="DESFire EV1 1K" class="model-image">
+                            <div class="model-info">
+                                <h3>DESFire EV1 1K</h3>
+                                <ul class="model-specs">
+                                    <li><span class="spec-label">Puce</span><span class="spec-value">DESFire EV1 1K</span></li>
+                                    <li><span class="spec-label">Fréquence</span><span class="spec-value">13.56 MHz</span></li>
+                                    <li><span class="spec-label">Mémoire</span><span class="spec-value">1 Ko (1024 octets)</span></li>
+                                    <li><span class="spec-label">Norme</span><span class="spec-value">ISO 14443 Type A</span></li>
+                                    <li><span class="spec-label">Dimensions</span><span class="spec-value">85.6 × 54 × 0.84 mm</span></li>
+                                    <li><span class="spec-label">Matériau</span><span class="spec-value">PVC blanc</span></li>
+                                    <li><span class="spec-label">Compatibilité</span><span class="spec-value">VingCard, Onity, Salto</span></li>
+                                </ul>
+                                <a class="model-cta" href="#">💬 Demander un devis</a>
+                            </div>
+                        </div>
+
+                        <!-- DESFire EV1 2K -->
+                        <div class="model-card">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/19a468cb2-f747-42f3-ab61-b7631abf0166.png" alt="DESFire EV1 2K" class="model-image">
+                            <div class="model-info">
+                                <h3>DESFire EV1 2K</h3>
+                                <ul class="model-specs">
+                                    <li><span class="spec-label">Puce</span><span class="spec-value">DESFire EV1 2K</span></li>
+                                    <li><span class="spec-label">Fréquence</span><span class="spec-value">13.56 MHz</span></li>
+                                    <li><span class="spec-label">Mémoire</span><span class="spec-value">2 Ko (2048 octets)</span></li>
+                                    <li><span class="spec-label">Norme</span><span class="spec-value">ISO 14443 Type A</span></li>
+                                    <li><span class="spec-label">Dimensions</span><span class="spec-value">85.6 × 54 × 0.84 mm</span></li>
+                                    <li><span class="spec-label">Matériau</span><span class="spec-value">PVC blanc</span></li>
+                                    <li><span class="spec-label">Compatibilité</span><span class="spec-value">VingCard, Onity, Salto</span></li>
+                                </ul>
+                                <a class="model-cta" href="#">💬 Demander un devis</a>
+                            </div>
+                        </div>
+
+                        <!-- DESFire EV1 4K -->
+                        <div class="model-card">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/136714574-9826-4404-aa36-96cf2856e24f.png" alt="DESFire EV1 4K" class="model-image">
+                            <div class="model-info">
+                                <h3>DESFire EV1 4K</h3>
+                                <ul class="model-specs">
+                                    <li><span class="spec-label">Puce</span><span class="spec-value">DESFire EV1 4K</span></li>
+                                    <li><span class="spec-label">Fréquence</span><span class="spec-value">13.56 MHz</span></li>
+                                    <li><span class="spec-label">Mémoire</span><span class="spec-value">4 Ko (4096 octets)</span></li>
+                                    <li><span class="spec-label">Norme</span><span class="spec-value">ISO 14443 Type A</span></li>
+                                    <li><span class="spec-label">Dimensions</span><span class="spec-value">85.6 × 54 × 0.84 mm</span></li>
+                                    <li><span class="spec-label">Matériau</span><span class="spec-value">PVC blanc</span></li>
+                                    <li><span class="spec-label">Compatibilité</span><span class="spec-value">VingCard, Onity, Salto</span></li>
+                                </ul>
+                                <a class="model-cta" href="#">💬 Demander un devis</a>
+                            </div>
+                        </div>
+
+                        <!-- DESFire EV2 2K -->
+                        <div class="model-card">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/183f2a815-6371-47b0-9dcc-06aa30d6ccb1.png" alt="DESFire EV2 2K" class="model-image">
+                            <div class="model-info">
+                                <h3>DESFire EV2 2K</h3>
+                                <ul class="model-specs">
+                                    <li><span class="spec-label">Puce</span><span class="spec-value">DESFire EV2 2K</span></li>
+                                    <li><span class="spec-label">Fréquence</span><span class="spec-value">13.56 MHz</span></li>
+                                    <li><span class="spec-label">Mémoire</span><span class="spec-value">2 Ko (2048 octets)</span></li>
+                                    <li><span class="spec-label">Norme</span><span class="spec-value">ISO 14443 Type A</span></li>
+                                    <li><span class="spec-label">Dimensions</span><span class="spec-value">85.6 × 54 × 0.84 mm</span></li>
+                                    <li><span class="spec-label">Matériau</span><span class="spec-value">PVC blanc</span></li>
+                                    <li><span class="spec-label">Compatibilité</span><span class="spec-value">VingCard, Onity, Salto</span></li>
+                                </ul>
+                                <a class="model-cta" href="#">💬 Demander un devis</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compatibility -->
+                <div class="compatibility-section">
+                    <h2>🔒 Compatibilité par marque de serrure</h2>
+                    <div class="compat-grid">
+                        <div class="compat-item">
+                            <h4>VingCard</h4>
+                            <p>VingCard Classic / Allure · 125 kHz</p>
+                        </div>
+                        <div class="compat-item">
+                            <h4>Onity</h4>
+                            <p>Onity HT / HT24 · 125 kHz</p>
+                        </div>
+                        <div class="compat-item">
+                            <h4>Salto</h4>
+                            <p>Salto KSF / SVN · 13.56 MHz (MIFARE)</p>
+                        </div>
+                        <div class="compat-item">
+                            <h4>Dormakaba</h4>
+                            <p>Dormakaba Legic / Mifare · 13.56 MHz</p>
+                        </div>
+                        <div class="compat-item">
+                            <h4>Saflok</h4>
+                            <p>Saflok SR / MT · 125 kHz</p>
+                        </div>
+                        <div class="compat-item">
+                            <h4>ASSA ABLOY</h4>
+                            <p>Saflok SR / MT · 125 kHz</p>
                         </div>
                     </div>
                 </div>
@@ -1548,7 +1538,7 @@
                     <div class="related-grid">
                         <div class="product-card" onclick="showPage('product-bracelet')">
                             <div class="product-image-wrapper">
-                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/13e326154-643e-42b9-93ef-ad91d9c45af2.png" alt="Bracelets RFID" class="product-image">
+                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/17a8553e2-166f-4103-8db8-9399fd48bf3a.png" alt="Bracelets RFID" class="product-image">
                                 <span class="product-badge">Pratique & Moderne</span>
                             </div>
                             <div class="product-info">
@@ -1559,7 +1549,7 @@
                         </div>
                         <div class="product-card" onclick="showPage('product-tag')">
                             <div class="product-image-wrapper">
-                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/152a0899d-c4dd-4bf5-a46f-15979fd94905.png" alt="Badges NFC" class="product-image">
+                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1ac2e4243-0e69-4071-9fc2-6b4c163e8299.png" alt="Badges NFC" class="product-image">
                                 <span class="product-badge">Polyvalent</span>
                             </div>
                             <div class="product-info">
@@ -1587,7 +1577,7 @@
                         <h4>Liens</h4>
                         <ul class="footer-links">
                             <li><a onclick="showPage('home')">Accueil</a></li>
-                            <li><a onclick="showPage('product-mifare')">Cartes MIFARE</a></li>
+                            <li><a onclick="showPage('product-cartes')">Cartes RFID</a></li>
                             <li><a onclick="showPage('product-bracelet')">Bracelets RFID</a></li>
                             <li><a onclick="showPage('product-tag')">Badges NFC</a></li>
                         </ul>
@@ -1622,11 +1612,11 @@
 
                 <div class="product-detail-grid">
                     <div class="product-gallery">
-                        <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/13e326154-643e-42b9-93ef-ad91d9c45af2.png" alt="Bracelets RFID Silicone" class="product-main-image" id="bracelet-main-img">
+                        <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/17a8553e2-166f-4103-8db8-9399fd48bf3a.png" alt="Bracelets RFID Silicone" class="product-main-image" id="bracelet-main-img">
                         <div class="product-thumbnails">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/13e326154-643e-42b9-93ef-ad91d9c45af2.png" class="product-thumbnail active" onclick="changeImage('bracelet-main-img', this)">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/13e326154-643e-42b9-93ef-ad91d9c45af2.png" class="product-thumbnail" onclick="changeImage('bracelet-main-img', this)" style="filter: brightness(1.1);">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/13e326154-643e-42b9-93ef-ad91d9c45af2.png" class="product-thumbnail" onclick="changeImage('bracelet-main-img', this)" style="filter: contrast(1.1);">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/17a8553e2-166f-4103-8db8-9399fd48bf3a.png" class="product-thumbnail active" onclick="changeImage('bracelet-main-img', this)">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/17a8553e2-166f-4103-8db8-9399fd48bf3a.png" class="product-thumbnail" onclick="changeImage('bracelet-main-img', this)" style="filter: brightness(1.1);">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/17a8553e2-166f-4103-8db8-9399fd48bf3a.png" class="product-thumbnail" onclick="changeImage('bracelet-main-img', this)" style="filter: contrast(1.1);">
                         </div>
                     </div>
 
@@ -1674,51 +1664,20 @@
                         </div>
 
                         <table class="specs-table">
-                            <tr>
-                                <th>Type de puce</th>
-                                <td>MIFARE Classic 1K / NTAG213 / NTAG215</td>
-                            </tr>
-                            <tr>
-                                <th>Fréquence</th>
-                                <td>13.56 MHz (HF)</td>
-                            </tr>
-                            <tr>
-                                <th>Matériau</th>
-                                <td>Silicone médical premium</td>
-                            </tr>
-                            <tr>
-                                <th>Étanchéité</th>
-                                <td>IP68 (immersion totale)</td>
-                            </tr>
-                            <tr>
-                                <th>Diamètre intérieur</th>
-                                <td>55 mm (adulte) / 45 mm (enfant)</td>
-                            </tr>
-                            <tr>
-                                <th>Largeur</th>
-                                <td>18 mm</td>
-                            </tr>
-                            <tr>
-                                <th>Couleurs</th>
-                                <td>Bleu, Rouge, Vert, Blanc, Noir, Jaune, Rose, Violet...</td>
-                            </tr>
-                            <tr>
-                                <th>Température</th>
-                                <td>-20°C à +80°C</td>
-                            </tr>
-                            <tr>
-                                <th>Applications</th>
-                                <td>Piscines, Spas, Parcs aquatiques, Festivals</td>
-                            </tr>
+                            <tr><th>Type de puce</th><td>MIFARE Classic 1K / NTAG213 / NTAG215</td></tr>
+                            <tr><th>Fréquence</th><td>13.56 MHz (HF)</td></tr>
+                            <tr><th>Matériau</th><td>Silicone médical premium</td></tr>
+                            <tr><th>Étanchéité</th><td>IP68 (immersion totale)</td></tr>
+                            <tr><th>Diamètre intérieur</th><td>55 mm (adulte) / 45 mm (enfant)</td></tr>
+                            <tr><th>Largeur</th><td>18 mm</td></tr>
+                            <tr><th>Couleurs</th><td>Bleu, Rouge, Vert, Blanc, Noir, Jaune, Rose, Violet...</td></tr>
+                            <tr><th>Température</th><td>-20°C à +80°C</td></tr>
+                            <tr><th>Applications</th><td>Piscines, Spas, Parcs aquatiques, Festivals</td></tr>
                         </table>
 
                         <div class="product-actions">
-                            <a class="btn-whatsapp" href="#">
-                                💬 Devis par WhatsApp
-                            </a>
-                            <button class="btn-back" onclick="showPage('home')">
-                                ← Retour au catalogue
-                            </button>
+                            <a class="btn-whatsapp" href="#">💬 Devis par WhatsApp</a>
+                            <button class="btn-back" onclick="showPage('home')">← Retour au catalogue</button>
                         </div>
                     </div>
                 </div>
@@ -1727,20 +1686,20 @@
                 <div class="related-section">
                     <h2>Produits complémentaires</h2>
                     <div class="related-grid">
-                        <div class="product-card" onclick="showPage('product-mifare')">
+                        <div class="product-card" onclick="showPage('product-cartes')">
                             <div class="product-image-wrapper">
-                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f03d30af-b4ea-4b72-ae6e-16ca86b1bfb1.png" alt="Cartes MIFARE" class="product-image">
+                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1d981b773-ee6c-4c18-9b6a-468278d787f6.png" alt="Cartes RFID" class="product-image">
                                 <span class="product-badge">Hôtellerie & Accès</span>
                             </div>
                             <div class="product-info">
-                                <h3>Cartes MIFARE Classic 1K</h3>
-                                <p>Standard international 13.56 MHz pour serrures d'hôtels.</p>
-                                <span class="product-link">Voir les détails →</span>
+                                <h3>Cartes RFID</h3>
+                                <p>6 modèles : MIFARE Classic 1K/4K, DESFire EV1/EV2. Compatible VingCard, Onity, Salto.</p>
+                                <span class="product-link">Voir les 6 modèles →</span>
                             </div>
                         </div>
                         <div class="product-card" onclick="showPage('product-tag')">
                             <div class="product-image-wrapper">
-                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/152a0899d-c4dd-4bf5-a46f-15979fd94905.png" alt="Badges NFC" class="product-image">
+                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1ac2e4243-0e69-4071-9fc2-6b4c163e8299.png" alt="Badges NFC" class="product-image">
                                 <span class="product-badge">Polyvalent</span>
                             </div>
                             <div class="product-info">
@@ -1768,7 +1727,7 @@
                         <h4>Liens</h4>
                         <ul class="footer-links">
                             <li><a onclick="showPage('home')">Accueil</a></li>
-                            <li><a onclick="showPage('product-mifare')">Cartes MIFARE</a></li>
+                            <li><a onclick="showPage('product-cartes')">Cartes RFID</a></li>
                             <li><a onclick="showPage('product-bracelet')">Bracelets RFID</a></li>
                             <li><a onclick="showPage('product-tag')">Badges NFC</a></li>
                         </ul>
@@ -1803,16 +1762,16 @@
 
                 <div class="product-detail-grid">
                     <div class="product-gallery">
-                        <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/152a0899d-c4dd-4bf5-a46f-15979fd94905.png" alt="Badges & Porte-clés NFC" class="product-main-image" id="tag-main-img">
+                        <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1ac2e4243-0e69-4071-9fc2-6b4c163e8299.png" alt="Badges & Porte-clés NFC" class="product-main-image" id="tag-main-img">
                         <div class="product-thumbnails">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/152a0899d-c4dd-4bf5-a46f-15979fd94905.png" class="product-thumbnail active" onclick="changeImage('tag-main-img', this)">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/152a0899d-c4dd-4bf5-a46f-15979fd94905.png" class="product-thumbnail" onclick="changeImage('tag-main-img', this)" style="filter: saturate(1.3);">
-                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/152a0899d-c4dd-4bf5-a46f-15979fd94905.png" class="product-thumbnail" onclick="changeImage('tag-main-img', this)" style="filter: brightness(0.95);">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1ac2e4243-0e69-4071-9fc2-6b4c163e8299.png" class="product-thumbnail active" onclick="changeImage('tag-main-img', this)">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1ac2e4243-0e69-4071-9fc2-6b4c163e8299.png" class="product-thumbnail" onclick="changeImage('tag-main-img', this)" style="filter: saturate(1.3);">
+                            <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1ac2e4243-0e69-4071-9fc2-6b4c163e8299.png" class="product-thumbnail" onclick="changeImage('tag-main-img', this)" style="filter: brightness(0.95);">
                         </div>
                     </div>
 
                     <div class="product-detail-info">
-                        <div class="product-tag">🔑 Polyvalent</div>
+                        <div class="product-tag"> Polyvalent</div>
                         <h1>Badges & Porte-clés NFC</h1>
                         <p class="product-description">
                             Nos badges et porte-clés NFC combinent robustesse et technologie dans un format compact et pratique. Équipés de puces NTAG213 ou MIFARE Classic 1K, ils sont parfaits pour le contrôle d'accès quotidien, l'identification du personnel, la gestion de parking et les applications de pointage. Leur format porte-clés les rend impossibles à oublier et résistants à l'usure intensive.
@@ -1825,7 +1784,7 @@
 
                         <div class="product-highlights" style="margin-top: 24px;">
                             <div class="highlight-item">
-                                <div class="highlight-icon"></div>
+                                <div class="highlight-icon">🔑</div>
                                 <div class="highlight-text">
                                     Format porte-clés
                                     <small>Toujours avec vous</small>
@@ -1855,51 +1814,20 @@
                         </div>
 
                         <table class="specs-table">
-                            <tr>
-                                <th>Type de puce</th>
-                                <td>NTAG213 / NTAG215 / MIFARE Classic 1K</td>
-                            </tr>
-                            <tr>
-                                <th>Fréquence</th>
-                                <td>13.56 MHz (HF / NFC)</td>
-                            </tr>
-                            <tr>
-                                <th>Matériau</th>
-                                <td>ABS + Époxy (résistant)</td>
-                            </tr>
-                            <tr>
-                                <th>Formats</th>
-                                <td>Rond (Ø25mm) / Goutte (30×40mm)</td>
-                            </tr>
-                            <tr>
-                                <th>Couleurs</th>
-                                <td>Bleu, Noir, Rouge, Gris, Blanc</td>
-                            </tr>
-                            <tr>
-                                <th>Anneau</th>
-                                <td>Acier inoxydable inclus</td>
-                            </tr>
-                            <tr>
-                                <th>Mémoire (NTAG213)</th>
-                                <td>144 octets utilisateur</td>
-                            </tr>
-                            <tr>
-                                <th>Mémoire (MIFARE 1K)</th>
-                                <td>1024 octets</td>
-                            </tr>
-                            <tr>
-                                <th>Applications</th>
-                                <td>Contrôle d'accès, Parking, Pointage, Smart Home</td>
-                            </tr>
+                            <tr><th>Type de puce</th><td>NTAG213 / NTAG215 / MIFARE Classic 1K</td></tr>
+                            <tr><th>Fréquence</th><td>13.56 MHz (HF / NFC)</td></tr>
+                            <tr><th>Matériau</th><td>ABS + Époxy (résistant)</td></tr>
+                            <tr><th>Formats</th><td>Rond (Ø25mm) / Goutte (30×40mm)</td></tr>
+                            <tr><th>Couleurs</th><td>Bleu, Noir, Rouge, Gris, Blanc</td></tr>
+                            <tr><th>Anneau</th><td>Acier inoxydable inclus</td></tr>
+                            <tr><th>Mémoire (NTAG213)</th><td>144 octets utilisateur</td></tr>
+                            <tr><th>Mémoire (MIFARE 1K)</th><td>1024 octets</td></tr>
+                            <tr><th>Applications</th><td>Contrôle d'accès, Parking, Pointage, Smart Home</td></tr>
                         </table>
 
                         <div class="product-actions">
-                            <a class="btn-whatsapp" href="#">
-                                💬 Devis par WhatsApp
-                            </a>
-                            <button class="btn-back" onclick="showPage('home')">
-                                ← Retour au catalogue
-                            </button>
+                            <a class="btn-whatsapp" href="#"> Devis par WhatsApp</a>
+                            <button class="btn-back" onclick="showPage('home')">← Retour au catalogue</button>
                         </div>
                     </div>
                 </div>
@@ -1908,20 +1836,20 @@
                 <div class="related-section">
                     <h2>Produits complémentaires</h2>
                     <div class="related-grid">
-                        <div class="product-card" onclick="showPage('product-mifare')">
+                        <div class="product-card" onclick="showPage('product-cartes')">
                             <div class="product-image-wrapper">
-                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1f03d30af-b4ea-4b72-ae6e-16ca86b1bfb1.png" alt="Cartes MIFARE" class="product-image">
+                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/1d981b773-ee6c-4c18-9b6a-468278d787f6.png" alt="Cartes RFID" class="product-image">
                                 <span class="product-badge">Hôtellerie & Accès</span>
                             </div>
                             <div class="product-info">
-                                <h3>Cartes MIFARE Classic 1K</h3>
-                                <p>Standard international 13.56 MHz pour serrures d'hôtels.</p>
-                                <span class="product-link">Voir les détails →</span>
+                                <h3>Cartes RFID</h3>
+                                <p>6 modèles : MIFARE Classic 1K/4K, DESFire EV1/EV2. Compatible VingCard, Onity, Salto.</p>
+                                <span class="product-link">Voir les 6 modèles →</span>
                             </div>
                         </div>
                         <div class="product-card" onclick="showPage('product-bracelet')">
                             <div class="product-image-wrapper">
-                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/13e326154-643e-42b9-93ef-ad91d9c45af2.png" alt="Bracelets RFID" class="product-image">
+                                <img src="https://image.qwenlm.ai/public_source/729b40e8-738d-4cec-8b63-47a73d7cb1ae/17a8553e2-166f-4103-8db8-9399fd48bf3a.png" alt="Bracelets RFID" class="product-image">
                                 <span class="product-badge">Pratique & Moderne</span>
                             </div>
                             <div class="product-info">
@@ -1949,7 +1877,7 @@
                         <h4>Liens</h4>
                         <ul class="footer-links">
                             <li><a onclick="showPage('home')">Accueil</a></li>
-                            <li><a onclick="showPage('product-mifare')">Cartes MIFARE</a></li>
+                            <li><a onclick="showPage('product-cartes')">Cartes RFID</a></li>
                             <li><a onclick="showPage('product-bracelet')">Bracelets RFID</a></li>
                             <li><a onclick="showPage('product-tag')">Badges NFC</a></li>
                         </ul>
@@ -1969,19 +1897,15 @@
     </div>
 
     <script>
-        // Page navigation
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById('page-' + pageId).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Close mobile menu if open
             document.getElementById('navLinks').classList.remove('open');
         }
 
-        // Scroll to section on home page
         function scrollToSection(sectionId) {
             showPage('home');
             setTimeout(() => {
@@ -1992,40 +1916,30 @@
             }, 100);
         }
 
-        // Mobile menu toggle
         function toggleMobileMenu() {
             document.getElementById('navLinks').classList.toggle('open');
         }
 
-        // FAQ toggle
         function toggleFaq(element) {
             const faqItem = element.parentElement;
             const isOpen = faqItem.classList.contains('open');
-            
-            // Close all
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('open');
             });
-            
-            // Open clicked if it wasn't open
             if (!isOpen) {
                 faqItem.classList.add('open');
             }
         }
 
-        // Change product image
         function changeImage(mainImgId, thumbnail) {
             const mainImg = document.getElementById(mainImgId);
             mainImg.src = thumbnail.src;
             mainImg.style.filter = thumbnail.style.filter || 'none';
-            
-            // Update active thumbnail
             const thumbnails = thumbnail.parentElement.querySelectorAll('.product-thumbnail');
             thumbnails.forEach(t => t.classList.remove('active'));
             thumbnail.classList.add('active');
         }
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -2035,7 +1949,6 @@
             }
         });
 
-        // Handle browser back button
         window.addEventListener('popstate', () => {
             showPage('home');
         });
