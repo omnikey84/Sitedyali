@@ -3,10 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2f6f5e">
+
     <title>RFID Hub | Grossiste Cartes & Badges RFID NFC 13.56 MHz en Algérie</title>
-    <meta name="description" content="Fournisseur B2B de cartes RFID, badges NFC et bracelets 13.56 MHz en Algérie. Stock local, livraison 69 wilayas, idéal pour hôtels (VingCard, Onity) et contrôle d'accès.">
-    
+    <meta name="description" content="Fournisseur B2B de cartes RFID, badges NFC et bracelets 13.56 MHz en Algérie. Stock local, livraison dans les 69 wilayas, compatible hôtellerie (VingCard, Onity).">
+
+    <!-- Open Graph / partage réseaux sociaux -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_DZ">
+    <meta property="og:title" content="RFID Hub | Grossiste Cartes & Badges RFID NFC en Algérie">
+    <meta property="og:description" content="Cartes RFID, badges NFC et bracelets 13.56 MHz. Stock local, livraison 69 wilayas, compatible VingCard et Onity.">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Favicon : icône "ondes" en SVG inline, aucune image externe requise -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232f6f5e'/%3E%3Ccircle cx='7' cy='18' r='1.4' fill='white'/%3E%3Cpath d='M11 18a6 6 0 0 0-4-5.7' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M11 18a10 10 0 0 0-4-9.8' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M11 18a14 14 0 0 0-4-13' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+    <!-- Données structurées : à compléter avec vos coordonnées réelles -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "RFID Hub Algérie",
+      "description": "Fournisseur B2B de cartes RFID, badges NFC et bracelets 13.56 MHz en Algérie, compatibles VingCard et Onity, livraison dans les 69 wilayas.",
+      "areaServed": { "@type": "Country", "name": "Algérie" },
+      "telephone": "+213XXXXXXXXX",
+      "priceRange": "$$"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,142 +48,363 @@
                         ink: '#14171e',
                         brand: { DEFAULT: '#2f6f5e', light: '#4a8e7c' },
                         accent: { DEFAULT: '#c97b3f' }
+                    },
+                    fontFamily: {
+                        serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
                     }
                 }
             }
         }
     </script>
+
+    <style>
+        :focus-visible { outline: 2px solid #2f6f5e; outline-offset: 2px; }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+            .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+            .wa-pulse { position: relative; }
+            .wa-pulse::before {
+                content: '';
+                position: absolute; inset: 0;
+                border-radius: 9999px;
+                background-color: #25D366;
+                animation: wa-ping 2.4s cubic-bezier(0,0,0.2,1) infinite;
+                z-index: -1;
+            }
+            @keyframes wa-ping {
+                0% { transform: scale(1); opacity: .55; }
+                100% { transform: scale(1.9); opacity: 0; }
+            }
+        }
+
+        .faq-chevron { transition: transform .25s ease; }
+        .faq-toggle[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
+    </style>
 </head>
 <body class="bg-bg text-ink font-sans">
 
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Aller au contenu principal</a>
+
     <!-- Top Bar -->
     <div class="bg-brand text-white text-xs sm:text-sm font-medium py-2 px-4 text-center flex flex-wrap justify-center items-center gap-4">
-        <span>🚀 Offre B2B Algérie : Stock disponible immédiatement via WhatsApp @RFIDHUB</span>
-    
+        <span>🚀 Offre B2B Algérie : stock disponible immédiatement, devis rapide sur WhatsApp</span>
+    </div>
 
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-bg/90 backdrop-blur-md border-b border-line">
         <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="font-serif text-2xl font-bold tracking-tight text-brand">RFID Hub</div>
+            <div class="flex items-center gap-2 font-serif text-2xl font-bold tracking-tight text-brand">
+                <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="5" cy="19" r="1.4" fill="currentColor" stroke="none"/>
+                    <path d="M9 19a6 6 0 0 0-4-5.7"/>
+                    <path d="M9 19a10 10 0 0 0-4-9.8"/>
+                    <path d="M9 19a14 14 0 0 0-4-13.6"/>
+                </svg>
+                RFID Hub
+            </div>
+
             <nav class="hidden md:flex items-center gap-8">
                 <a href="#avantages" class="text-sm font-medium hover:text-brand transition-colors">Avantages</a>
                 <a href="#catalogue" class="text-sm font-medium hover:text-brand transition-colors">Catalogue</a>
                 <a href="#kit" class="text-sm font-medium hover:text-brand transition-colors">Échantillons</a>
-                <a href="https://wa.me/RFIDHUB" target="_blank" class="px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-light transition-all">Commander</a>
+                <a href="#faq" class="text-sm font-medium hover:text-brand transition-colors">FAQ</a>
+                <a data-wa-link data-wa-text="Bonjour, je souhaite passer une commande de cartes RFID." href="#" class="px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-light transition-all">Commander</a>
             </nav>
+
+            <button id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Ouvrir le menu" class="md:hidden p-2 -mr-2 text-ink">
+                <svg id="menuIconOpen" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                <svg id="menuIconClose" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-bg px-6 py-4 flex flex-col gap-4">
+            <a href="#avantages" class="text-sm font-medium">Avantages</a>
+            <a href="#catalogue" class="text-sm font-medium">Catalogue</a>
+            <a href="#kit" class="text-sm font-medium">Échantillons</a>
+            <a href="#faq" class="text-sm font-medium">FAQ</a>
+            <a data-wa-link data-wa-text="Bonjour, je souhaite passer une commande de cartes RFID." href="#" class="px-4 py-3 bg-brand text-white text-sm font-semibold rounded-lg text-center">Commander sur WhatsApp</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-24 pb-20 px-6 text-center max-w-4xl mx-auto">
-        <span class="inline-block py-1 px-3 rounded-full bg-brand/10 text-brand text-xs font-semibold mb-6 uppercase tracking-wider">Fournisseur B2B Officiel en Algérie</span>
-        <h1 class="font-serif text-4xl sm:text-6xl mb-6 leading-tight">Solutions Cartes & Badges RFID 13.56 MHz</h1>
-        <p class="text-lg text-ink/70 mb-10 max-w-2xl mx-auto">Partenaire de référence pour les hôtels, complexes touristiques et entreprises. Compatible VingCard, Onity et systèmes de contrôle d'accès.</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="https://wa.me/RFIDHUB" target="_blank" class="px-8 py-4 bg-ink text-white rounded-xl font-bold hover:bg-brand transition-all shadow-lg flex items-center justify-center gap-2">
-                <span>Discuter sur WhatsApp (@RFIDHUB)</span>
-            </a>
-            <a href="#catalogue" class="px-8 py-4 bg-white border border-line text-ink rounded-xl font-bold hover:border-brand transition-all flex items-center justify-center">
-                Voir le catalogue
-            </a>
-        </div>
-    </section>
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="relative pt-24 pb-20 px-6 text-center max-w-4xl mx-auto overflow-hidden">
+            <svg class="hidden md:block absolute -top-6 -right-14 w-72 h-72 text-brand/10 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true">
+                <circle cx="4" cy="20" r="1" fill="currentColor" stroke="none"/>
+                <path d="M8 20a5 5 0 0 0-3.2-4.7"/>
+                <path d="M12 20a9.5 9.5 0 0 0-3.2-9.3"/>
+                <path d="M16 20a14 14 0 0 0-3.2-13.8"/>
+                <path d="M20 20a18.5 18.5 0 0 0-3.2-18.3"/>
+            </svg>
 
-    <!-- Avantages -->
-    <section id="avantages" class="py-16 bg-white border-y border-line">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-6 rounded-2xl bg-bg border border-line">
-                <div class="text-3xl mb-4">📦</div>
-                <h3 class="font-serif text-xl font-bold mb-2">Stock Local & Rapide</h3>
-                <p class="text-ink/70 text-sm">Disponibilité immédiate en Algérie pour éviter les ruptures et les longs délais d'importation.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-bg border border-line">
-                <div class="text-3xl mb-4">🏨</div>
-                <h3 class="font-serif text-xl font-bold mb-2">Compatibilité Hôtelière</h3>
-                <p class="text-ink/70 text-sm">Cartes encodables et puces haute sécurité parfaitement adaptées aux serrures de grandes marques.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-bg border border-line">
-                <div class="text-3xl mb-4">🚚</div>
-                <h3 class="font-serif text-xl font-bold mb-2">Livraison 69 Wilayas</h3>
-                <p class="text-ink/70 text-sm">Expédition sécurisée et rapide sur l'ensemble du territoire national pour les professionnels.</p>
-            </div>
-        </div>
-    </section>
+            <div class="relative z-10">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand/10 text-brand text-xs font-semibold mb-6 uppercase tracking-wider">Fournisseur B2B en Algérie</span>
+                <h1 class="font-serif text-4xl sm:text-6xl mb-6 leading-tight">Solutions Cartes & Badges RFID 13.56 MHz</h1>
+                <p class="text-lg text-ink/70 mb-8 max-w-2xl mx-auto">Partenaire de référence pour les hôtels, complexes touristiques et entreprises. Compatible VingCard, Onity et systèmes de contrôle d'accès.</p>
 
-    <!-- Catalogue -->
-    <section id="catalogue" class="py-20 px-6 max-w-6xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="font-serif text-3xl sm:text-4xl mb-4">Notre Catalogue Professionnel</h2>
-            <p class="text-ink/70">Des produits certifiés 13.56 MHz pour tous vos besoins de badgeage et d'identification.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Produit 1 -->
-            <div class="bg-white rounded-2xl p-8 border border-line flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Hôtellerie & Accès</span>
-                    <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Cartes MIFARE Classic 1K</h3>
-                    <p class="text-ink/70 text-sm mb-6">Standard international 13.56 MHz, idéale pour la programmation des serrures d'hôtels et badges d'entreprise.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+                    <a data-wa-link data-wa-text="Bonjour, je souhaite en savoir plus sur vos cartes RFID." href="#" class="px-8 py-4 bg-ink text-white rounded-xl font-bold hover:bg-brand transition-all shadow-lg flex items-center justify-center gap-2">
+                        <span>Discuter sur WhatsApp</span>
+                    </a>
+                    <a href="#catalogue" class="px-8 py-4 bg-white border border-line text-ink rounded-xl font-bold hover:border-brand transition-all flex items-center justify-center">
+                        Voir le catalogue
+                    </a>
                 </div>
-                <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20suis%20intéressé%20par%20les%20Cartes%20MIFARE%20Classic%201K." target="_blank" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
-            </div>
-            <!-- Produit 2 -->
-            <div class="bg-white rounded-2xl p-8 border border-line flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Pratique & Moderne</span>
-                    <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Bracelets RFID silicone</h3>
-                    <p class="text-ink/70 text-sm mb-6">Résistants à l'eau, parfaits pour les parcs aquatiques, piscines d'hôtels, spas et centres de fitness.</p>
-                </div>
-                <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20suis%20intéressé%20par%20les%20Bracelets%20RFID." target="_blank" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
-            </div>
-            <!-- Produit 3 -->
-            <div class="bg-white rounded-2xl p-8 border border-line flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Polyvalent</span>
-                    <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Badges & Porte-clés NFC</h3>
-                    <p class="text-ink/70 text-sm mb-6">Puces NTAG / MIFARE intégrées dans un format porte-clés robuste pour un usage quotidien intensif.</p>
-                </div>
-                <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20suis%20intéressé%20par%20les%20Badges%20et%20Porte-clés%20NFC." target="_blank" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Sample Kit CTA -->
-    <section id="kit" class="py-16 px-6">
-        <div class="max-w-4xl mx-auto bg-ink text-white rounded-3xl p-12 text-center shadow-xl">
-            <h2 class="font-serif text-3xl sm:text-4xl mb-4">Testez la qualité avant de commander</h2>
-            <p class="text-white/80 mb-8 max-w-xl mx-auto">Demandez votre kit d'échantillons professionnel et vérifiez la compatibilité directement sur vos équipements.</p>
-            <a href="https://wa.me/RFIDHUB?text=Bonjour,%20je%20souhaite%20recevoir%20un%20kit%20d'échantillons%20RFID." target="_blank" class="px-8 py-4 bg-white text-ink rounded-xl font-bold hover:bg-bg transition-all inline-block shadow">
-                Recevoir mon kit via WhatsApp (@RFIDHUB)
-            </a>
-        </div>
-    </section>
+                <p class="text-sm text-ink/60">📦 Stock disponible en Algérie&nbsp; · &nbsp;🏨 100+ hôtels équipés par notre équipe&nbsp; · &nbsp;🚚 Livraison dans les 69 wilayas</p>
+            </div>
+        </section>
+
+        <!-- Avantages -->
+        <section id="avantages" class="py-16 bg-white border-y border-line">
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="reveal p-6 rounded-2xl bg-bg border border-line">
+                    <div class="w-11 h-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-2">Stock Local & Rapide</h3>
+                    <p class="text-ink/70 text-sm">Disponibilité immédiate en Algérie pour éviter les ruptures et les longs délais d'importation.</p>
+                </div>
+                <div class="reveal p-6 rounded-2xl bg-bg border border-line">
+                    <div class="w-11 h-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4"/><path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-2">Compatibilité Hôtelière</h3>
+                    <p class="text-ink/70 text-sm">Cartes encodables et puces haute sécurité parfaitement adaptées aux serrures de grandes marques.</p>
+                </div>
+                <div class="reveal p-6 rounded-2xl bg-bg border border-line">
+                    <div class="w-11 h-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/></svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-2">Livraison 69 Wilayas</h3>
+                    <p class="text-ink/70 text-sm">Expédition sécurisée et rapide sur l'ensemble du territoire national pour les professionnels.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise / Crédibilité -->
+        <section class="py-16 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="reveal font-serif text-3xl sm:text-4xl mb-4">Une expertise terrain, pas seulement du stock</h2>
+                <p class="reveal text-ink/70 max-w-2xl mx-auto mb-10">Avant d'être fournisseur, notre équipe a géré le déploiement de systèmes de contrôle d'accès RFID dans plus de 100 hôtels à travers l'Algérie. Nous connaissons les contraintes des exploitants hôteliers, pas seulement la fiche technique des cartes.</p>
+                <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-2xl bg-white border border-line">
+                        <div class="font-serif text-3xl font-bold text-brand mb-1">10+ ans</div>
+                        <p class="text-sm text-ink/70">D'expérience dans le contrôle d'accès hôtelier</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-line">
+                        <div class="font-serif text-3xl font-bold text-brand mb-1">100+</div>
+                        <p class="text-sm text-ink/70">Hôtels équipés en Algérie par notre équipe</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-line">
+                        <div class="font-serif text-3xl font-bold text-brand mb-1">69</div>
+                        <p class="text-sm text-ink/70">Wilayas couvertes par notre réseau de livraison</p>
+                    </div>
+                </div>
+                <p class="text-xs text-ink/40 mt-4">Chiffres à confirmer / ajuster selon votre parcours réel avant publication.</p>
+            </div>
+        </section>
+
+        <!-- Catalogue -->
+        <section id="catalogue" class="py-20 px-6 max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="reveal font-serif text-3xl sm:text-4xl mb-4">Notre Catalogue Professionnel</h2>
+                <p class="reveal text-ink/70">Des produits certifiés 13.56 MHz pour tous vos besoins de badgeage et d'identification.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Produit 1 -->
+                <div class="reveal bg-white rounded-2xl p-8 border border-line flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all">
+                    <div>
+                        <span class="text-xs font-bold text-accent uppercase tracking-wider">Hôtellerie & Accès</span>
+                        <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Cartes MIFARE Classic 1K</h3>
+                        <p class="text-ink/70 text-sm mb-6">Standard international 13.56 MHz, idéale pour la programmation des serrures d'hôtels et badges d'entreprise.</p>
+                    </div>
+                    <a data-wa-link data-wa-text="Bonjour, je suis intéressé par les Cartes MIFARE Classic 1K." href="#" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
+                </div>
+                <!-- Produit 2 -->
+                <div class="reveal bg-white rounded-2xl p-8 border border-line flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all">
+                    <div>
+                        <span class="text-xs font-bold text-accent uppercase tracking-wider">Pratique & Moderne</span>
+                        <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Bracelets RFID silicone</h3>
+                        <p class="text-ink/70 text-sm mb-6">Résistants à l'eau, parfaits pour les parcs aquatiques, piscines d'hôtels, spas et centres de fitness.</p>
+                    </div>
+                    <a data-wa-link data-wa-text="Bonjour, je suis intéressé par les Bracelets RFID." href="#" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
+                </div>
+                <!-- Produit 3 -->
+                <div class="reveal bg-white rounded-2xl p-8 border border-line flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all">
+                    <div>
+                        <span class="text-xs font-bold text-accent uppercase tracking-wider">Polyvalent</span>
+                        <h3 class="font-serif text-2xl font-bold mt-2 mb-4">Badges & Porte-clés NFC</h3>
+                        <p class="text-ink/70 text-sm mb-6">Puces NTAG / MIFARE intégrées dans un format porte-clés robuste pour un usage quotidien intensif.</p>
+                    </div>
+                    <a data-wa-link data-wa-text="Bonjour, je suis intéressé par les Badges et Porte-clés NFC." href="#" class="w-full py-3 bg-brand text-white text-center rounded-xl font-semibold hover:bg-brand-light transition-all">Devis par WhatsApp</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comment commander -->
+        <section class="py-16 px-6 bg-white border-y border-line">
+            <div class="max-w-5xl mx-auto px-6">
+                <h2 class="reveal font-serif text-3xl sm:text-4xl text-center mb-12">Comment commander</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="reveal text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-brand text-white flex items-center justify-center font-serif font-bold mb-4">1</div>
+                        <h3 class="font-bold mb-2">Contactez-nous</h3>
+                        <p class="text-sm text-ink/70">Décrivez votre besoin sur WhatsApp : produit, quantité, marque de serrure si applicable.</p>
+                    </div>
+                    <div class="reveal text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-brand text-white flex items-center justify-center font-serif font-bold mb-4">2</div>
+                        <h3 class="font-bold mb-2">Recevez un devis</h3>
+                        <p class="text-sm text-ink/70">Nous confirmons la compatibilité et vous envoyons un devis adapté à votre volume.</p>
+                    </div>
+                    <div class="reveal text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-brand text-white flex items-center justify-center font-serif font-bold mb-4">3</div>
+                        <h3 class="font-bold mb-2">Livraison</h3>
+                        <p class="text-sm text-ink/70">Expédition sécurisée vers votre wilaya, partout en Algérie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Kit CTA -->
+        <section id="kit" class="py-16 px-6">
+            <div class="reveal max-w-4xl mx-auto bg-ink text-white rounded-3xl p-12 text-center shadow-xl">
+                <h2 class="font-serif text-3xl sm:text-4xl mb-4">Testez la qualité avant de commander</h2>
+                <p class="text-white/80 mb-8 max-w-xl mx-auto">Demandez votre kit d'échantillons professionnel et vérifiez la compatibilité directement sur vos équipements.</p>
+                <a data-wa-link data-wa-text="Bonjour, je souhaite recevoir un kit d'échantillons RFID." href="#" class="px-8 py-4 bg-white text-ink rounded-xl font-bold hover:bg-bg transition-all inline-block shadow">
+                    Recevoir mon kit via WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 px-6 max-w-3xl mx-auto">
+            <h2 class="reveal font-serif text-3xl sm:text-4xl text-center mb-10">Questions fréquentes</h2>
+            <div class="space-y-3">
+                <div class="reveal border border-line rounded-xl bg-white overflow-hidden">
+                    <button type="button" class="faq-toggle w-full flex justify-between items-center text-left px-5 py-4 font-semibold" aria-expanded="false" aria-controls="faq-1">
+                        <span>Vos cartes sont-elles compatibles avec VingCard et Onity ?</span>
+                        <svg class="faq-chevron w-5 h-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div id="faq-1" class="hidden px-5 pb-4 text-sm text-ink/70">Oui. Nos cartes 13.56 MHz (MIFARE, NTAG) sont conçues pour fonctionner avec les principaux systèmes hôteliers, dont VingCard et Onity. Envoyez-nous la référence de votre système sur WhatsApp pour confirmer la compatibilité exacte avant commande.</div>
+                </div>
+                <div class="reveal border border-line rounded-xl bg-white overflow-hidden">
+                    <button type="button" class="faq-toggle w-full flex justify-between items-center text-left px-5 py-4 font-semibold" aria-expanded="false" aria-controls="faq-2">
+                        <span>Quelle quantité minimale de commande appliquez-vous ?</span>
+                        <svg class="faq-chevron w-5 h-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div id="faq-2" class="hidden px-5 pb-4 text-sm text-ink/70">Nous travaillons aussi bien avec des hôtels indépendants qu'avec de grands groupes. La quantité minimale dépend du produit choisi : contactez-nous sur WhatsApp avec votre besoin pour recevoir un devis adapté.</div>
+                </div>
+                <div class="reveal border border-line rounded-xl bg-white overflow-hidden">
+                    <button type="button" class="faq-toggle w-full flex justify-between items-center text-left px-5 py-4 font-semibold" aria-expanded="false" aria-controls="faq-3">
+                        <span>Livrez-vous dans toute l'Algérie ?</span>
+                        <svg class="faq-chevron w-5 h-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div id="faq-3" class="hidden px-5 pb-4 text-sm text-ink/70">Oui, nous livrons dans les 69 wilayas. Les délais varient selon la destination et sont communiqués au moment du devis.</div>
+                </div>
+                <div class="reveal border border-line rounded-xl bg-white overflow-hidden">
+                    <button type="button" class="faq-toggle w-full flex justify-between items-center text-left px-5 py-4 font-semibold" aria-expanded="false" aria-controls="faq-4">
+                        <span>Puis-je tester avant de commander en volume ?</span>
+                        <svg class="faq-chevron w-5 h-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div id="faq-4" class="hidden px-5 pb-4 text-sm text-ink/70">Oui, un kit d'échantillons est disponible sur demande via WhatsApp pour valider la compatibilité avec vos équipements avant toute commande importante.</div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-line py-12 px-6 text-center text-sm text-ink/60">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="font-serif text-lg font-bold text-ink">RFID Hub Algérie</div>
-            <div>© 2026 RFID Hub. Tous droits réservés.</div>
-            <a href="https://wa.me/RFIDHUB" target="_blank" class="text-brand font-semibold hover:underline">Support WhatsApp : @RFIDHUB</a>
+    <footer class="bg-white border-t border-line py-12 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm text-ink/60">
+            <div>
+                <div class="font-serif text-lg font-bold text-ink mb-2">RFID Hub Algérie</div>
+                <p>Fournisseur B2B de cartes et badges RFID/NFC 13.56 MHz, stock local et livraison dans les 69 wilayas.</p>
+            </div>
+            <div>
+                <div class="font-semibold text-ink mb-2">Liens</div>
+                <ul class="space-y-1">
+                    <li><a href="#avantages" class="hover:text-brand">Avantages</a></li>
+                    <li><a href="#catalogue" class="hover:text-brand">Catalogue</a></li>
+                    <li><a href="#faq" class="hover:text-brand">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="font-semibold text-ink mb-2">Contact</div>
+                <a data-wa-link data-wa-text="Bonjour, j'ai une question." href="#" class="text-brand font-semibold hover:underline">Support WhatsApp</a>
+            </div>
         </div>
+        <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-line text-center text-xs text-ink/40">© 2026 RFID Hub. Tous droits réservés.</div>
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/RFIDHUB" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
-        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    <a data-wa-link data-wa-text="Bonjour, je souhaite plus d'informations." href="#" aria-label="Contacter RFID Hub sur WhatsApp" class="wa-pulse fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
     </a>
 
     <script>
-        function downloadHTML() {
-            const htmlContent = document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'index.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+        // ===== Configuration WhatsApp =====
+        // ⚠️ Remplacez par votre numéro WhatsApp Business complet,
+        // au format international, chiffres uniquement (sans "+", "00" ni espaces).
+        // Exemple pour un numéro algérien : "213551234567"
+        const WHATSAPP_NUMBER = "213XXXXXXXXX";
+
+        document.querySelectorAll('[data-wa-link]').forEach((el) => {
+            const msg = el.getAttribute('data-wa-text') || '';
+            const url = 'https://wa.me/' + WHATSAPP_NUMBER + (msg ? '?text=' + encodeURIComponent(msg) : '');
+            el.setAttribute('href', url);
+            el.setAttribute('target', '_blank');
+            el.setAttribute('rel', 'noopener noreferrer');
+        });
+
+        // ===== Menu mobile =====
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const iconOpen = document.getElementById('menuIconOpen');
+        const iconClose = document.getElementById('menuIconClose');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.setAttribute('aria-expanded', String(!expanded));
+            mobileMenu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMobileMenu));
+
+        // ===== FAQ accordéon =====
+        document.querySelectorAll('.faq-toggle').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const panel = document.getElementById(btn.getAttribute('aria-controls'));
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', String(!expanded));
+                panel.classList.toggle('hidden');
+            });
+        });
+
+        // ===== Animation au scroll =====
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach((el) => io.observe(el));
+        } else {
+            revealEls.forEach((el) => el.classList.add('is-visible'));
         }
     </script>
 </body>
